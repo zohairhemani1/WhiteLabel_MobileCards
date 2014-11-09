@@ -1,0 +1,12 @@
+@media all and (max-width:460px){
+.footer a.main{display:block; width:100%; text-align:center; margin-left:0; float:none;}
+.footer ul{display:block; float:none; margin:0 auto; width:200px;}
+.logo{margin:0 auto; float:none; text-align:center;}
+.heading{float:none; margin:0 auto; text-align:center;}
+p.vid_caption{font-size:12px; white-space:nowrap;}	
+input#sbmt{width:20%;}
+}
+@media all and (max-width:380px){
+a.add_to_contact{width:90%; margin:10px auto;}	
+input#txt{width:65%;}
+}
