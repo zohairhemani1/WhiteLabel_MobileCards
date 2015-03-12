@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<head><meta name="google-translate-customization" content="1f5c23986fb9fac-96fc26b9bdf56f82-gdb13995a4fb146d1-d"></meta>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $_fname . " " . $_lname . " - Biz Social Etc"; ?></title>
@@ -15,7 +15,8 @@
 <link href="/assets/css/jquery.bxslider.css" rel="stylesheet" />
 <style type="text/css">
 body {
-    background-image: url();
+    background-image: url(/2.jpg);
+    background-color: #C6C6C6;
 }
 </style>
 <script src="/headers/jquery-1.10.2.js"></script>
@@ -348,27 +349,16 @@ body {
     </div>
     <div class="banner_box">
       <ul class="bxslider" style="position: absolute; left:0;">
-        <li>
-          <center>
-          </center>
-        </li>
-        
-        <!-- <li>
-
-
+ 
+                  <li>
 
                     <center>
 
-
-
-                        <img src="/images/sliderimagethree.jpg" />
-
-
+                         <a href="http://thesmartercard.com/app-pay.html" target="new"><img src="/images/sliderimage1.png" /></a>
 
                     </center>
 
-
-
+                  </li>
                   </li>
 
 
@@ -440,7 +430,9 @@ body {
         <li><a class="twitter" href="<?php echo $_twitter; ?>" target="_blank">twitter</a></li>
         <li><a class="google" href="<?php echo $_google; ?>" target="_blank">google</a></li>
         <li><a class="linkedin" href="<?php echo $_linked; ?>" target="_blank">linkedin</a></li>
-        <li><a class="youtube" href="<?php echo $_youtube; ?>" target="_blank">youtube</a></li>
+        <li><a class="youtube" href="<?php echo $_youtube; ?>" target="_blank">youtube</a>      </li>
+      </ul>
+      <ul>
         <div class="clear"></div>
       </ul>
       <div class="clear"></div>
@@ -459,7 +451,7 @@ body {
 
 
 
-	$('#youtube').html(function(i, html) {
+    $('#youtube').html(function(i, html) {
 
 
 
@@ -514,11 +506,15 @@ body {
 
 
   </script> 
-  Copyright TheSmarterCard 2014. All rights reserved </div>
-<div align="center">
-  <p><a href="https://taxbot.com/s/referral/" target="new"><img src="http://taxbotbanners.s3.amazonaws.com/10tips728x90.png" width="519" /></a></p>
-  <p><br />
-  </p>
+<div id="google_translate_element"></div>
+<p>
+  <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+  </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <br />
+  Copyright TheSmarterCard 2015. All rights reserved </p>
 </div>
 </body>
 </html>

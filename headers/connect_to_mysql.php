@@ -1,12 +1,12 @@
 <?php
 
-$db_host = "smartcard.db.11683817.hostedresource.com"; 
+$db_host = "easyy.db.11683817.hostedresource.com"; 
 
-$db_username = "smartcard";  
+$db_username = "easyy";  
 
-$db_pass = "Smartcard786!";  
+$db_pass = "Hemani786!";  
 
-$db_name = "smartcard"; 
+$db_name = "easyy"; 
 
 // Run the connection here  
 
