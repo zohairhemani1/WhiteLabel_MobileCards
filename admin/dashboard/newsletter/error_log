@@ -1,0 +1,11 @@
+[16-Oct-2012 14:37:10] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) in /home/zohaibs/public_html/newsletter/connect_to_mysql.php on line 18
+[16-Oct-2012 14:38:07] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) in /home/zohaibs/public_html/newsletter/connect_to_mysql.php on line 18
+[16-Oct-2012 14:40:41] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'zohaibs_hemani'@'localhost' (using password: NO) in /home/zohaibs/public_html/newsletter/connect_to_mysql.php on line 18
+[16-Oct-2012 14:45:13] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home/zohaibs/public_html/newsletter/index.php on line 19
+[16-Oct-2012 14:46:05] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home/zohaibs/public_html/newsletter/blast_script.php on line 9
+[16-Oct-2012 14:46:05] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/zohaibs/public_html/newsletter/blast_script.php on line 11
+[16-Oct-2012 14:47:21] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home/zohaibs/public_html/newsletter/blast_script.php on line 9
+[16-Oct-2012 14:47:21] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/zohaibs/public_html/newsletter/blast_script.php on line 11
+[16-Oct-2012 14:49:57] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home/zohaibs/public_html/newsletter/blast_script.php on line 9
+[16-Oct-2012 14:49:57] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/zohaibs/public_html/newsletter/blast_script.php on line 11
+[16-Oct-2012 14:52:33] PHP Warning:  mysql_num_rows(): supplied argument is not a valid MySQL result resource in /home/zohaibs/public_html/newsletter/index.php on line 19
