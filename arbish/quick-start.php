@@ -1,58 +1,5 @@
-<?php
-	include 'headers/connect_to_mysql.php';
-	include 'headers/logo.php';
-	$logo_image = "http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image";		
-	$profile_image = "http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image";
 
-
-
-if(isset($_GET['app_id']))
-{
-		$app_id=  $_GET['app_id'];
-		$formAction = "?&app_id=$app_id";
-		$query = "SELECT * FROM app where app_id = $app_id ";
-		$result = mysqli_query($con,$query);	
-		$row = mysqli_fetch_array($result)
-		or die ('error3');
-		$app_name = $row['app_name'];
-		$logo = $row['logo'];
-		$cover = $row['cover'];
-		$about_us = $row['about_us'];
-	if($logo != null || $profile != null)
-		{
-			$logo_image = "img/logo/{$logo}";		
-		
-		}
-		else
-		{
-			$logo_image = "http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image";		
-			$profile_image = "http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image";		
-	
-		}
-
-	if($_POST)
-	{
-		$app_id=  $_GET['app_id'];
-		$app_name = $_POST['app_name'];
-		$about_us = $_POST['about_us'];
-		$query = "UPDATE app SET  app_name = '$app_name',about_us = '$about_us', logo = '$logo', cover = '$cover' WHERE app_id = '$app_id'";
-		$result = mysqli_query($con,$query);
-		header("Location: app.php?update=true");
-	}
-}	
-else 
-{
-	if($_POST)
-	{
-		$app_name = $_POST['app_name'];
-		$about_us = $_POST['about_us'];
-		$query_inserting = "INSERT INTO app(app_name,about_us,logo,cover)
-		VALUES ('$app_name','$about_us','$logo','$cover')";
-		mysqli_query($con,$query_inserting)
-		or die('error while inserting app');
-		header("Location: app.php?insert=true");	
-	}	
-}
+<?php 
 
 if ($_GET['template'] != 1)
 	{
@@ -62,6 +9,172 @@ if ($_GET['template'] != 1)
 	{
 		$design = "design1.png";
 	}
+
+$template = $_GET['template'];
+
+$upgrade = $_GET['upgrade'];
+
+session_start();
+
+if(isset($_SESSION['username']))
+
+{
+
+    $username = $_SESSION['username'];
+
+    include 'headers/_user-details.php';
+
+    
+
+        
+
+        if($_POST)
+
+        {		
+
+			include 'headers/image_upload.php';
+
+			include 'headers/logo_upload.php';
+
+			
+
+			$_fname = $_POST['first_name'];
+
+			$_lname = $_POST['last_name'];
+
+			$_email = $_POST['email'];
+
+			$_jobTitle = $_POST['job'];
+
+			$_office = $_POST['office'];
+
+			$_mobile = $_POST['mobile'];
+
+			$_website = $_POST['website'];
+
+			$_facebook = $_POST['facebook'];
+
+			$_twitter = $_POST['twitter'];
+
+			$_linked = $_POST['linked'];
+
+			$_youtube = $_POST['youtube'];
+
+			$_google = $_POST['googlePlus'];
+
+			$_description = $_POST['description'];
+
+			$_company = $_POST['company'];
+
+			$_video = $_POST['video'];
+
+			$_city = $_POST['city'];
+
+			$_country = $_POST['country'];
+
+			$_state = $_POST['state'];
+
+			$_address = $_POST['address'];
+
+			$_referlink = $_POST['referlink'];
+			
+			$_gender = $_POST['gender'];
+			
+			$_zip = $_POST['zip'];
+
+			
+
+			if(isset($profilePic)){
+
+				$_profilePic = $profilePic;
+
+			}
+
+			if(isset($logo)){
+
+				$_logo = $logo;
+
+			}
+
+			
+
+			
+
+			
+
+				if(!isset($_fname) || !isset($_lname) || !isset($_email)  || !isset($_jobTitle) || !isset($_office) || !isset($_mobile) || !isset($_website) ||  !isset($_description)|| !isset($_company) )
+
+				{
+
+					$error = "Please fill all the details. <br>";
+
+					
+
+				}
+
+				elseif(!isset($_profilePic) || $_profilePic == null || empty($_profilePic))
+
+				{
+
+					$error = $error . "Upload Profile Picture. <br>";
+
+					
+
+				}
+
+				elseif(!isset($_logo) || $_logo == null || empty($_logo))
+
+				{
+
+					$error = $error . "Upload Company's LOGO.<br>";
+
+				}
+
+				else
+
+				{
+
+					include '/headers/connect_to_mysql.php';
+
+					
+
+			$query_details = "UPDATE registeration SET fname = '$_fname', lname = '$_lname', email = '$_email', logo = '$_logo', job = '$_jobTitle', office = '$_office', mobile = '$_mobile', website = '$_website', profilePicture = '$_profilePic', facebook = '$_facebook', twitter = '$_twitter', linked = '$_linked', youtube = '$_youtube', google = '$_google', description = '$_description', company = '$_company', video = '$_video', template = '$template', state = '$_state', city = '$_city', zip = '$_zip', country = '$_country', address = '$_address', gender = '$_gender', referlink = '$_referlink' WHERE username like '$username' ";
+
+    		mysqli_query($con,$query_details);
+header("Location: login.php");
+			//header("Location: cards/$username");
+
+				}
+
+			
+
+			
+
+		}
+
+	
+
+	
+
+}
+
+else if(!isset($_SESSION['username']) && $upgrade == 1)
+
+{
+
+	header('Location: login.php?upgrade=1');		
+
+}
+
+
+
+else
+
+{
+
+	header('Location: login.php');		
+
+}
 
 ?>
 
@@ -148,14 +261,14 @@ include 'headers/menu-top-navigation.php';
                      </div>
                      <div class="widget-body form">
                         <!-- BEGIN FORM-->
-                        <form action="insert_app.php<?php echo $formAction; ?>" method="post" class="form-horizontal">
+                        <form action="quick-start.php?template=<?php echo $template;?>" method="post" enctype="multipart/form-data" class="form-horizontal">
                              <div class="control-group">
                               <label class="control-label">Username</label>
                            <div class="template" style="right:39px;position:absolute;float:right;">
 									<img src="img/<?php echo $design; ?>"/>
     							</div>
                               <div class="controls">
-                                 <input required name="" value="<?php echo $app_name; ?>" 
+                                 <input required name="username" value="<?php echo $username; ?>" 
                                  placeholder="Enter User Name" type="text" class="span6 " />
                               </div>
                               
@@ -163,28 +276,28 @@ include 'headers/menu-top-navigation.php';
                              <div class="control-group">
                               <label class="control-label">First Name</label>
                               <div class="controls">
-                                 <input required name="" value="<?php echo $app_name; ?>" 
+                                 <input required name="first_name" value="<?php echo $_fname; ?>" 
                                  placeholder="Enter First Name" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Last Name</label>
                               <div class="controls">
-                                 <input required name="" value="<?php echo $app_name; ?>" 
+                                 <input required name="last_name" value="<?php echo $_lname; ?>" 
                                  placeholder="Enter Last Name" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Email</label>
                               <div class="controls">
-                                 <input required name="email" value="<?php echo $email; ?>" 
+                                 <input required name="email" value="<?php echo $_email; ?>" 
                                  placeholder="Enter Email " type="email" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Gender</label>
                               <div class="controls">
-                                 <select class="span6 chosen" name="app_id" data-placeholder="Select Your Gender" tabindex="1">
+                                 <select class="span6 chosen" name="gender" data-placeholder="Select Your Gender" tabindex="1">
                                     <option value='Male'>Male</option>
 									<option value='Female'>Female</option>
                                  </select>
@@ -211,14 +324,14 @@ include 'headers/menu-top-navigation.php';
                              <div class="control-group">
                               <label class="control-label">Job Title</label>
                               <div class="controls">
-                                 <input required name="" value="<?php echo $job; ?>" 
+                                 <input required name="job" value="<?php echo $_jobTitle; ?>" 
                                  placeholder="Enter Job Title" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Office No</label>
                               <div class="controls">
-                                 <input required name="" value="<?php echo $office; ?>" 
+                                 <input required name="office" value="<?php echo $_office; ?>" 
                                  placeholder="Enter Office No" type="text" class="span6 "onkeypress="return IsNumeric(event);" 
                                  ondrop="return false;" onpaste="return false;" />
  								   <span id="error" style="color: Red; display: none">* Input digits (0 - 9)</span>
@@ -228,7 +341,7 @@ include 'headers/menu-top-navigation.php';
                              <div class="control-group">
                               <label class="control-label">Mobile No</label>
                               <div class="controls">
-                                 <input required name="" value="<?php echo $mobile; ?>" 
+                                 <input required name="mobile" value="<?php echo $_mobile; ?>" 
                                  placeholder="Enter Mobile No" type="text" class="span6 " onkeypress="return isNumeric(event);" 
                                  ondrop="return false;" onpaste="return false;" />
  								  <span id="error1" style="color: Red; display: none">* Input digits (0 - 9)</span>
@@ -237,35 +350,35 @@ include 'headers/menu-top-navigation.php';
                              <div class="control-group">
                               <label class="control-label">Address</label>
                               <div class="controls">
-                                 <input required name="app_name" value="<?php echo $address; ?>" 
+                                 <input required name="address" value="<?php echo $_address; ?>" 
                                  placeholder="Enter Address" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">City</label>
                               <div class="controls">
-                                 <input required name="" value="<?php echo $city; ?>" 
+                                 <input required name="city" value="<?php echo $_city; ?>" 
                                  placeholder="Enter city" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Country</label>
                               <div class="controls">
-                                 <input required name="" value="<?php echo $country; ?>" 
+                                 <input required name="country" value="<?php echo $_country; ?>" 
                                  placeholder="Enter Country" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">State</label>
                               <div class="controls">
-                                 <input required name="" value="<?php echo $state; ?>" 
+                                 <input required name="state" value="<?php echo $_state; ?>" 
                                  placeholder="Enter State" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Zip</label>
                               <div class="controls">
-                                 <input required name="" value="<?php echo $zip; ?>" 
+                                 <input required name="zip" value="<?php echo $_zip; ?>" 
                                  placeholder="Enter Zip" type="text" class="span6 " />
                               </div>
                            </div>
@@ -275,13 +388,13 @@ include 'headers/menu-top-navigation.php';
                             <div class="controls">
                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                     <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                        <img src="<?php echo $profile_image; ?>" alt="" />
+                                        <img src="<?php echo $_profilePic; ?>" alt="" />
                                     </div>
                                     <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                     <div>
                                <span class="btn btn-file"><span class="fileupload-new">Select image</span>
                                <span class="fileupload-exists">Change</span>
-                               <input type="file" name="logo" class="default" /></span>
+                               <input type="file" name="file" class="default" /></span>
                                         <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
                                     </div>
                                 </div>
@@ -290,57 +403,131 @@ include 'headers/menu-top-navigation.php';
                              <div class="control-group">
                               <label class="control-label">Facebook</label>
                               <div class="controls">
-                                 <input required name="facebook" value="https://www.facebook.com/bizsocialetc" 
+                                 <input required name="facebook" value="<?php echo $_facebook?>" 
                                  placeholder="" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Twitter</label>
                               <div class="controls">
-                                 <input required name="twitter" value="https://twitter.com/bizsocialetc" 
+                                 <input required name="twitter" value="<?php echo $_twitter?>" 
                                  placeholder="" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Linked</label>
                               <div class="controls">
-                                 <input required name="linked" value="http://www.linkedin.com/profile/view?id=327048006&trk=nav_responsive_tab_profile" 
+                                 <input required name="linked" value="<?php echo $_linkedin?>" 
                                  placeholder="" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Youtube</label>
                               <div class="controls">
-                                 <input required name="youtube" value="https://www.youtube.com/watch?v=MTMaPw82DYU&feature=youtu.be" 
+                                 <input required name="youtube" value="<?php echo $_youtube?>" 
                                  placeholder="" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Google Plus</label>
                               <div class="controls">
-                                 <input required name="" value="https://plus.google.com/113403331055048268890/posts" 
+                                 <input required name="googlePlus" value="<?php echo $_google?>" 
                                  placeholder="" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Youtube Video Link</label>
                               <div class="controls">
-                                 <input required name="" value="" 
+                                 <input required name="video" value="<?php echo $_video;?>" 
                                  placeholder="Your Youtbe Video Link " type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Company Refer Link</label>
                               <div class="controls">
-                                 <input required name="" value="" 
-                                 placeholder="Your Company Refer Link" type="text" class="span6 " />
+                                 <input required name="referlink" value="" 
+                                 placeholder="Your Company Refer Link" value="<?php echo $_referlink;?>" type="text" class="span6 " />
                               </div>
                            </div>
+                     <?php
+                         if($_GET['upgrade']==1)
+							{
+								echo
+								"                        <div class='control-group'>
+                        <div class='control-group'>
+                            <label class='control-label'>Profile Picture</label>
+                            <div class='controls'>
+                                <div class='fileupload fileupload-new' data-provides='fileupload'>
+                                    <div class='fileupload-new thumbnail' style='width: 200px; height: 150px;'>
+                                        <img src='<?php echo $_profilePic; ?>' alt='' />
+                                    </div>
+                                    <div class='fileupload-preview fileupload-exists thumbnail' style='max-width: 200px; max-height: 150px; line-height: 20px;'></div>
+                                    <div>
+                               <span class='btn btn-file'><span class='fileupload-new'>Select image</span>
+                               <span class='fileupload-exists'>Change</span>
+                               <input type='file' name='file' class='default' /></span>
+                                        <a href='#' class='btn fileupload-exists' data-dismiss='fileupload'>Remove</a>
+                                    </div>
+                                </div>
+								 </div>
+                                </div>
+                             <div class='control-group'>
+                              <label class='control-label'>Facebook</label>
+                              <div class='controls'>
+                                 <input required name='facebook' value='<?php echo $_facebook?>' 
+                                 placeholder='' type='text' class='span6 ' />
+                              </div>
+                           </div>
+                             <div class='control-group'>
+                              <label class='control-label'>Twitter</label>
+                              <div class='controls'>
+                                 <input required name='twitter' value='<?php echo $_twitter?>' 
+                                 placeholder='' type='text' class='span6 ' />
+                              </div>
+                           </div>
+                             <div class='control-group'>
+                              <label class='control-label'>Linked</label>
+                              <div class='controls'>
+                                 <input required name='linked' value='<?php echo $_linkedin?>' 
+                                 placeholder='' type='text' class='span6 ' />
+                              </div>
+                           </div>
+                             <div class='control-group'>
+                              <label class='control-label'>Youtube</label>
+                              <div class='controls'>
+                                 <input required name='youtube' value='<?php echo $_youtube?>' 
+                                 placeholder='' type='text' class='span6 ' />
+                              </div>
+                           </div>
+                             <div class='control-group'>
+                              <label class='control-label'>Google Plus</label>
+                              <div class='controls'>
+                                 <input required name='googlePlus' value='<?php echo $_google?>' 
+                                 placeholder='' type='text' class='span6 ' />
+                              </div>
+                           </div>
+                             <div class='control-group'>
+                              <label class='control-label'>Youtube Video Link</label>
+                              <div class='controls'>
+                                 <input required name='video' value='<?php echo $_video;?>' 
+                                 placeholder='Your Youtbe Video Link ' type='text' class='span6 ' />
+                              </div>
+                           </div>
+                             <div class='control-group'>
+                              <label class='control-label'>Company Refer Link</label>
+                              <div class='controls'>
+                                 <input required name='referlink' value='' 
+                                 placeholder='Your Company Refer Link' value='<?php echo $_referlink;?>' type='text' class='span6 ' />
+                              </div>
+                           </div>
+							";
+							}
+                    ?>
                              <div class="control-group">
                               <label class="control-label">Profile</label>
                               <div class="controls">
-                      <textarea required name="about_us" placeholder="Enter Your Profile " rows="6" type="text" 
-                      class="span6 "></textarea>
+                      <textarea required name="description"  placeholder="Enter Your Profile " rows="6" type="text" 
+                      class="span6 "><?php echo $_description; ?></textarea>
                               </div>
                            </div>
                             <div class="controls">

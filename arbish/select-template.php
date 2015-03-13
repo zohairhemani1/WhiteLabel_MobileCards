@@ -85,7 +85,7 @@ include 'headers/menu-top-navigation.php';
                                     <div class="tab-content">
                                        <div class="tab-pane active" id="tab_1_1">
                              <div class="">
-							<p><a href="insert_card.php?template=2"><div style="font-size:17px">Click here for your<br>
+							<p><a href="quick-start.php?template=2"><div style="font-size:17px">Click here for your<br>
                              White Template BIZ<br> BUSINESS CARD</div> </a></p>
 
                                     <img src="img/design2.png"/>
@@ -93,7 +93,7 @@ include 'headers/menu-top-navigation.php';
                                 </div>
                                        <div class="tab-pane" id="tab_1_2">         
                           	<div style="float:right" class="">
-								<p><a href="insert_card.php?template=1"><div style="font-size:17px">Click here for your<br>
+								<p><a href="quick-start.php?template=1"><div style="font-size:17px">Click here for your<br>
                                  Blue Template BIZ<br> BUSINESS CARD</div> </a></p>               
                                     <img src="img/design1.png"/>
                                 </div>                          

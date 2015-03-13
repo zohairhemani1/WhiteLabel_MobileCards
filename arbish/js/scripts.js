@@ -1264,19 +1264,28 @@ var App = function () {
         }
     }
 
-    var handleLoginForm = function () {
+var handleLoginForm = function () {
         jQuery('#forget-password').click(function () {
             jQuery('#loginform').hide();
             jQuery('#forgotform').show(200);
         });
 
-        jQuery('#forget-btn').click(function () {
+        /*jQuery('#btn-Forget').click(function () {
 
             jQuery('#loginform').slideDown(200);
             jQuery('#forgotform').slideUp(200);
+        });*/
+jQuery('#signup').click(function () {
+            jQuery('#loginform').hide();
+            jQuery('#registerform').show(200);
         });
-    }
 
+        /*jQuery('#btnSign').click(function () {
+
+            jQuery('#loginform').slideDown(200);
+            jQuery('#registerform').slideUp(200);
+        });*/
+    }
     var handleFixInputPlaceholderForIE = function () {
         //fix html5 placeholder attribute for ie7 & ie8
         if (jQuery.browser.msie && jQuery.browser.version.substr(0, 1) <= 9) { // ie7&ie8

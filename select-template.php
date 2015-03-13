@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" >
 <head>
@@ -168,7 +166,7 @@
                       <div class="design"> 
                         <h3><a href="quick-start.php?template=2">Click here for your <br/>
                           White Template  BIZ </a><a href="quick-start.php?template=2"><br />
-                          BUSINESS</a> <a href="quick-start.php?template=1">CARD </a></h3>
+                          BUSINESS</a> <a href="quick-start.php?template=2">CARD </a></h3>
                         <p><a href="<?php echo $designTwo; ?>"><img src="images/design2.1.png" /> </a></p>
                       </div>
                     </div>
