@@ -1,0 +1,45 @@
+@media all and (max-width:495px){
+.footer a.main{display:block; width:100%; text-align:center; margin-left:0; float:none;}
+.footer ul{display:block; float:none; margin:0 auto; width:200px;}
+.logo{width:50%; float:left;}
+.logo2{width:80%; text-align:center; margin:5px auto; float:none; }
+.logo img{width:100%;}
+.logo2 img{width:100%;}
+.people_img{width:30%; float:right;}
+.people_img img{width:60%;}
+.author{margin-left:0;}
+.author_img{width:40%; float:right;}
+.author_img img{width:100%;}
+input#txt{width:52%;}
+.heading{float:none; margin:0 auto; text-align:center;}
+p.vid_caption{font-size:12px; white-space:nowrap;}	
+input#sbmt{width:20%;}
+.author p{text-align:center;}
+}
+@media all and (max-width:460px){
+.author_detail{}
+.author_detail ul{text-align:left; margin-top:0; width:90%;}
+.author_img{width:35%; float:right;}
+	
+}
+@media all and (max-width:410px){
+	input.add_to_contact{font-size:14px;}
+	.author_img{width:30%; float:right;}
+	.author_detail h1{font-size:120%;}
+	.author_detail h2{font-size:100%;}
+	.author_detail ul li{font-size:90%;}
+}
+
+
+@media all and (max-width:380px){
+a.add_to_contact{width:90%; margin:10px auto;}	
+input#txt{width:95%; margin:5px auto; float:none;}
+input.add_to_contact{width:60%; margin:0px auto; float:none;}
+.author_img {margin-top:2%;}
+}
+@media all and (max-width:340px){
+	.author_detail h1{font-size:100%;}
+	.author_detail h2{font-size:90%;}
+	.author_detail ul li{font-size:70%;}
+	.header{min-height:80px !important;}
+}
