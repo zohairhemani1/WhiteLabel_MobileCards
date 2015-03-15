@@ -1,4 +1,4 @@
 
 RewriteEngine On    # Turn on the rewriting engine
-RewriteRule    ^cards/([0-9-A-Z]+.*)/?$    /template.php?username=$1    [NC,L]    # Handle Cards
+RewriteRule    ^cards/([0-9-A-Z]+.*)/?$    template.php?username=$1    [NC,L]    # Handle Cards
 

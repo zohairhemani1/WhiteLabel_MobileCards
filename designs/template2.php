@@ -24,21 +24,21 @@
 
 <title><?php echo $_fname . " " . $_lname . " - Biz Social Etc"; ?></title>
 
-<link rel="stylesheet" href="/css/style2.css" type="text/css" />
+<link rel="stylesheet" href="../css/style2.css" type="text/css" />
 
-<link rel="stylesheet" href="/css/media_queries2.css" type="text/css" />
-
-
-
-<link href="/assets/css/jquery.bxslider.css" rel="stylesheet" />
+<link rel="stylesheet" href="../css/media_queries2.css" type="text/css" />
 
 
 
-<script src="/headers/jquery-1.10.2.js"></script>
+<link href="../assets/css/jquery.bxslider.css" rel="stylesheet" />
 
-<script src="/headers/jquery-1.10.2.min.js"></script>
 
-<script src="/headers/email-validation.js"></script>
+
+<script src="../headers/jquery-1.10.2.js"></script>
+
+<script src="../headers/jquery-1.10.2.min.js"></script>
+
+<script src="../headers/email-validation.js"></script>
 
 </head>
 

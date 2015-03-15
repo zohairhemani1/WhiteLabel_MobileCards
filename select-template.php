@@ -1,202 +1,182 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" >
+
+<!doctype html>
+<html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="author" content="Super User" />
-<meta name="generator" content="Joomla! - Open Source Content Management" />
-<title>Select Design</title>
-<link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
-<link rel="stylesheet" href="http://bizsocialetc.info/plugins/system/rokbox/themes/clean/rokbox-style.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/libraries/gantry/css/grid-12.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/gantry-core.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/joomla-core.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/community-a.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/community-a-extensions.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/utilities.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/typography.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.infohttp://bizsocialetc.info/templates/rt_fresco/css/demo-styles.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/template.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/template-webkit.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/fusionmenu.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/modules/mod_pwebcontact/css/general/default-bottom.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/modules/mod_pwebcontact/css/default/dark.css" type="text/css" />
-<link rel="stylesheet" href="css/custom.css" type="text/css" />
+   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+   <meta content="" name="description" />
+   <meta content="" name="author" />
+   <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+   <link href="assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+   <link href="assets/bootstrap/css/bootstrap-fileupload.css" rel="stylesheet" />
+   <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+   <link href="css/style.css" rel="stylesheet" />
+   <link href="css/style_responsive.css" rel="stylesheet" />
+   <link href="css/style_default.css" rel="stylesheet" id="style_color" />
+   <link href="assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
+   <link rel="stylesheet" type="text/css" href="assets/gritter/css/jquery.gritter.css" />
+   <link rel="stylesheet" type="text/css" href="assets/chosen-bootstrap/chosen/chosen.css" />
+   <link rel="stylesheet" type="text/css" href="assets/jquery-tags-input/jquery.tagsinput.css" />    
+   <link rel="stylesheet" type="text/css" href="assets/clockface/css/clockface.css" />
+   <link rel="stylesheet" type="text/css" href="assets/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+   <link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />   
+   <link rel="stylesheet" type="text/css" href="css/custom.css" />
+   <link rel="stylesheet" type="text/css" href="assets/bootstrap-timepicker/compiled/timepicker.css" />
+   <link rel="stylesheet" type="text/css" href="assets/bootstrap-colorpicker/css/colorpicker.css" />
+   <link rel="stylesheet" href="assets/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css" />
+   <link rel="stylesheet" href="assets/data-tables/DT_bootstrap.css" />
+   <link rel="stylesheet" type="text/css" href="assets/bootstrap-daterangepicker/daterangepicker.css" />
+   <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+   <link rel="stylesheet" type="text/css" href="css/main.css" />
 
-<style type="text/css">
-.design {
-    float:left;
-    padding:10px;
-    margin:10px;
-}
-.design-wrapper {
-	width:660px;
-	margin:0px auto 0px auto;
-}
-</style>
-<script src="http://bizsocialetc.info/media/system/js/mootools-core.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/media/system/js/core.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/media/system/js/caption.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/media/system/js/mootools-more.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/plugins/system/rokbox/rokbox.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/plugins/system/rokbox/themes/clean/rokbox-config.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/templates/rt_fresco/js/gantry-totop.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/libraries/gantry/js/browser-engines.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/templates/rt_fresco/js/load-transition.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/modules/mod_roknavmenu/themes/fusion/js/fusion.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/media/system/js/validate.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/modules/mod_pwebcontact/js/mootools.pwebcontact.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/modules/mod_rokajaxsearch/js/rokajaxsearch.js" type="text/javascript"></script>
+<title>The Smarter Card</title>
 
-<!--[if lte IE 7]>
-<link rel="stylesheet" href="/modules/mod_pwebcontact/css/default/dark-ie.css" type="text/css" />
-<![endif]-->
 </head>
-<body  class="mainstyle-community-a backgroundlevel-high font-family-fresco font-size-is-default logo-type-fresco menu-type-fusionmenu typography-style-light col12 option-com-content menu-about ">
-<div id="rt-page-surround">
-  <div class="main-bg">
-    <div class="rt-container">
-      <div id="rt-drawer">
-        <div class="clear"></div>
-      </div>
-     
-     
-     <?php include 'headers/navigation.php';?>
-     
-      <div id="rt-transition" class="rt-hidden">
-        <div id="rt-breadcrumbs" class="rt-transparent-bg">
-          <div class="rt-block">
-            <div class="rt-breadcrumb-surround"> 
-              <!-- PWebContact -->
-              <div id="pwebcontact164" class="pwebcontact dark default default-bottom " style="" dir="ltr">
-                <div id="pwebcontact164_box" class="pwebcontact_box" style="display:none">
-                  <div id="pwebcontact164_container" class="pwebcontact_container">
-                    <form action="/index.php?option=com_content&amp;view=article&amp;id=48&amp;Itemid=114" method="post" name="pwebcontact" id="pwebcontact164_form" class="pwebcontact164_form pwebcontact_form form-validate dark default default-bottom ">
-                      <div id="pwebcontact164_msg" class="pwebcontact_msg"><img src="/modules/mod_pwebcontact/images/loading.gif" width="16" height="16" border="0" alt="" /></div>
-                      <div class="pwebcontact_pretext">
-                        <center>
-                          <h2> Contact Us </h2>
-                        </center>
-                        <i><u>Fill out the form below if you have any queries and we will get back to you as soon as possible<b</u></div>
-                      <div class="pwebcontact_fields">
-                        <div class="pwebcontact_field">
-                          <label for="pwebcontact164_name">Name </label>
-                          <input type="text" name="name" id="pwebcontact164_name" size="30" class="inputbox" value="" />
-                          <div class="pweb_clear"></div>
-                        </div>
-                        <div class="pwebcontact_field">
-                          <label for="pwebcontact164_email" class="required">Email <span class="pwebcontact_asterisk">*</span></label>
-                          <input type="text" name="email" id="pwebcontact164_email" size="30" class="inputbox validate-email required" value="" />
-                          <div class="pweb_clear"></div>
-                        </div>
-                        <div class="pwebcontact_field">
-                          <label for="pwebcontact164_phone" class="required">Phone <span class="pwebcontact_asterisk">*</span></label>
-                          <input type="text" name="phone" id="pwebcontact164_phone" size="30" class="inputbox required" value="" />
-                          <div class="pweb_clear"></div>
-                        </div>
-                        <div class="pwebcontact_field">
-                          <label for="pwebcontact164_message" class="required">Message <span class="pwebcontact_asterisk">*</span></label>
-                          <textarea cols="50" rows="10" name="message" id="pwebcontact164_message" class="inputbox required"></textarea>
-                          <div class="pweb_clear"></div>
-                        </div>
-                        <div class="pwebcontact_buttons">
-                          <label class="inline">
-                            <input type="checkbox" name="copy" value="1" />
-                            <span>Send a copy to yourself</span></label>
-                        </div>
-                        <div class="pwebcontact_buttons">
-                          <input type="submit" name="Submit" class="button validate" value="Send" />
-                          <input type="button" id="pwebcontact164_new" class="button reset" value="New email" style="display:none" />
-                        </div>
-                      </div>
-                      <input type="hidden" name="user_id" value="0"/>
-                      <input type="hidden" name="ip" value="42.201.248.93"/>
-                      <input type="hidden" name="title" value="About Us"/>
-                      <input type="hidden" name="referrer" value="http://bizsocialetc.info/index.php?option=com_content&view=article&id=48&Itemid=114"/>
-                      <input type="hidden" name="mid" value="164"/>
-                      <input type="hidden" name="2b4ba2ab23f3a295a1ce844bb17f55d0" value="1" id="pwebcontact164_token"/>
-                    </form>
-                  </div>
-                  <div id="pwebcontact164_bg" class="pwebcontact_bg"></div>
-                </div>
-              </div>
-              
-              <!-- PWebContact end --> </div>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div id="rt-main" class="mb12">
-          <div class="rt-container">
-            <div class="rt-grid-12">
-              <div class="rt-block component-block">
-                <div class="component-content">
-                  <div class="item-page">
-                    <h2> <a href="#"> Select Design</a> </h2>
-                    
-                  	
-                    
-                    <?php
-						
-						$upgrade = $_GET['upgrade'];
-						if($upgrade==1)
-						{
-							$designOne = "quick-start.php?template=1&upgrade=1";
-							$designTwo = "quick-start.php?template=2&upgrade=1";
-						}
-						else
-						{
-							$designOne = "quick-start.php?template=1";
-							$designTwo = "quick-start.php?template=2";
-						}
-						
-						
-						
-						
-						
-					?>
-    
-    	
-                    
-                    <div class="design-wrapper">
-                      <div class="design"> 
-                        <h3><a href="quick-start.php?template=1">Click here for your <br/>
-                          Blue Template  BIZ </a><a href="quick-start.php?template=2"><br />
-                          BUSINESS</a> <a href="quick-start.php?template=1">CARD </a></h3>
-                        <p><a href="<?php echo $designOne; ?>"><img src="images/design1.png"  /></a></p>
-                      </div>
-                      <div class="design"> 
-                        <h3><a href="quick-start.php?template=2">Click here for your <br/>
-                          White Template  BIZ </a><a href="quick-start.php?template=2"><br />
-                          BUSINESS</a> <a href="quick-start.php?template=2">CARD </a></h3>
-                        <p><a href="<?php echo $designTwo; ?>"><img src="images/design2.1.png" /> </a></p>
-                      </div>
-                    </div>
-                    <p class="MsoNormal"> </p>
-                  </div>
-                </div>
-                <div class="clear"></div>
-              </div>
-            </div>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="rt-footer-surround">
-    <div class="rt-container">
-      <div class="rt-footer-inner">
-        <div id="rt-copyright">
-          <div class="rt-grid-4 rt-prefix-4 rt-alpha">
-            <div class="rt-block"> <span class="copytext">&copy; 2014 - Developed by <a href="http://www.mobipowerapps.com" target="_blank">MobiPowerApps</a></span> </div>
-          </div>
-          <div class="rt-grid-4 rt-omega"> <a href="#" class="rt-totop"></a> </div>
-          <div class="clear"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div><!-- begin olark code -->
 
-<!-- end olark code -->
+<body>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="fixed-top">
+<?php
+include 'headers/menu-top-navigation.php'; 
+?>
+      <!-- END SIDEBAR -->
+      <!-- BEGIN PAGE -->  
+      <div id="main-content">
+         <!-- BEGIN PAGE CONTAINER-->
+         <div class="container-fluid">
+            <!-- BEGIN PAGE HEADER-->   
+            <div class="row-fluid">
+               <div class="span12">
+                   <!-- BEGIN THEME CUSTOMIZER-->
+
+                   <!-- END THEME CUSTOMIZER-->
+                  <h3 class="page-title">
+                     Smart Cart
+                     <small>Select Your Card Design</small>
+                  </h3>
+                  <ul class="breadcrumb">
+                       <li>
+                           <a href="index.php"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+                       </li>
+                       <li><a href="#">Select Template</a><span class="divider-last">&nbsp;</span></li>
+                   </ul>
+
+               </div>
+            </div>
+            <!-- END PAGE HEADER-->
+            <!-- BEGIN PAGE CONTENT-->
+            <div class="row-fluid">
+               <div class="span12">
+                  <!-- BEGIN SAMPLE FORM widget-->   
+                  <div class="widget">
+                     <div class="widget-title">
+                        <h4><i class="icon-reorder"></i>Select Design</h4>
+                        <span class="tools">
+                           <a href="javascript:;" class="icon-chevron-down"></a>
+                         </span>
+                     </div>
+                        <div class="widget-body">
+                           <div class="row-fluid">
+                              <div id="main-design" style="margin-left: 25%;" class="span6">
+                                          <ul class="nav nav-tabs">
+                                       <li id="nav-width" class="active"><a href="#tab_1_1" data-toggle="tab">Select White Template</a></li>
+                                       <li id="nav-width"><a href="#tab_1_2" data-toggle="tab">Select Blue Template</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                       <div class="tab-pane active" id="tab_1_1">
+                             <div class="">
+							<p><a href="quick-start.php?template=2"><div style="font-size:17px">Click here for your<br>
+                             White Template BIZ<br> BUSINESS CARD</div> </a></p>
+
+                                    <img src="img/design2.png"/>
+    							</div>                                       
+                                </div>
+                                       <div class="tab-pane" id="tab_1_2">         
+                          	<div style="float:right" class="">
+								<p><a href="quick-start.php?template=1"><div style="font-size:17px">Click here for your<br>
+                                 Blue Template BIZ<br> BUSINESS CARD</div> </a></p>               
+                                    <img src="img/design1.png"/>
+                                </div>                          
+                                     </acenter>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                        </div>
+                  </div>
+               </div>
+            </div>
+		</div>
+	</div>
+</div>
+            <!-- END PAGE CONTENT-->         
+         </div>
+         <!-- END PAGE CONTAINER-->
+      </div>
+      <!-- END PAGE -->  
+   </div>
+   <!-- END CONTAINER -->
+   <!-- BEGIN FOOTER -->
+  <?php  
+	include 'headers/footer.php';
+	?>
+   <!-- END FOOTER -->
+   <!-- BEGIN JAVASCRIPTS -->    
+   <!-- Load javascripts at bottom, this will reduce page load time -->
+
+ 
+   <script src="js/jquery-1.8.2.min.js"></script>    
+   <script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
+   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="assets/bootstrap/js/bootstrap-fileupload.js"></script>
+   <script src="js/jquery.blockui.js"></script>
+   <!-- ie8 fixes -->
+   <!--[if lt IE 9]>
+   <script src="js/excanvas.js"></script>
+   <script src="js/respond.js"></script>
+   <![endif]-->
+   <script type="text/javascript" src="assets/chosen-bootstrap/chosen/chosen.jquery.min.js"></script>
+   <script type="text/javascript" src="assets/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script> 
+   <script type="text/javascript" src="assets/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+   <script type="text/javascript" src="assets/clockface/js/clockface.js"></script>
+   <script type="text/javascript" src="assets/jquery-tags-input/jquery.tagsinput.min.js"></script>
+   <script type="text/javascript" src="assets/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>
+   <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>   
+   <script type="text/javascript" src="assets/bootstrap-daterangepicker/date.js"></script>
+   <script type="text/javascript" src="assets/bootstrap-daterangepicker/daterangepicker.js"></script> 
+   <script type="text/javascript" src="assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>  
+   <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+   <script type="text/javascript" src="assets/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+   <script src="assets/fancybox/source/jquery.fancybox.pack.js"></script>
+   <script src="js/scripts.js"></script>
+   <script>
+      jQuery(document).ready(function() {       
+         // initiate layout and plugins
+         App.init();
+      });
+   </script>
+      		<script>
+         var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+        function IsNumeric(e) 
+		{
+            var keyCode = e.which ? e.which : e.keyCode
+            var ret = ((keyCode >= 37 && keyCode <= 65 )  || specialKeys.indexOf(keyCode) != -1)            
+			document.getElementById("error").style.display = ret ? "none" : "inline";
+            return ret;
+		}
+		</script>
+ <script>
+ var specialKeys1 = new Array();
+        specialKeys1.push(8); //Backspace
+        function isNumeric(e) 
+		{
+			var keyCode1 = e.which ? e.which : e.keyCode1
+            var ret1 = ((keyCode1 >= 37 && keyCode1 <= 65) || specialKeys1.indexOf(keyCode1) != -1);
+            document.getElementById("error1").style.display = ret1 ? "none" : "inline";
+            return ret1;
+		}
+		</script>
 </body>
 </html>
+

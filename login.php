@@ -1,16 +1,75 @@
 <?php
 
 include 'headers/client-details.php';
+include 'headers/connect_to_mysql.php';
 
-		$upgrade = $_GET['upgrade'];
-if($_GET['active'])
-{
-	$error = "Your account has been successfully activated";	
-}
+print_r($_POST);
 
-	if($_POST)
+// Register page Start here//
+		if(!empty($_POST['register']))
+		{
+			$firstName = $_POST['first_name'];
+			$lastName = $_POST['last_name'];
+			$password = $_POST['password'];
+			$confirmPassword = $_POST['c_password'];
+			$email = $_POST['email'];
+			$username = $_POST['username'];
+			$activationKey = md5(microtime().rand());    // Generating Random Activation Key and inserting in database 
+			//$subject = "Please verify your new account at {$username_client}";
+			//$message = "Thank you for registering for {$username_client} Beta!\nPlease click the link below to activate your account.\nClick here to activate your account.\n{$domain_client}/account-activation.php?activate=$activationKey\nClicking on this link will lead you to a page that verifies your successful registration, and will provide a link for customizing your very first {$username_client}!\n\nYour Username Is: {$username}\nYour Password Is: {$password}\n\nTo view and/or share your card, go to {$domain_client}/cards/{$username}\n\n If you have any questions, please email {$username_client} at {$email_client}";
+			
+			$query_username = "SELECT * FROM registeration WHERE username like '$username'";
+			$result_username = mysqli_query($con,$query_username);
+			$count = mysqli_num_rows($result_username);
+			
+			
+			if($password != $confirmPassword)
+			{
+					$error = "Password Doesn't Match";
+			}
+			
+			elseif($count!=0)
+			{
+				$error = "Username Already Exists";
+			}
+			elseif(!(filter_var($email, FILTER_VALIDATE_EMAIL)))
+			{
+					$error = "Email Address Not Valid";
+			}
+			
+			elseif(!isset($_POST['agreement']))
+			{
+				$error = "You must agree to our terms and conditions.";
+			}
+			
+			
+			else
+			{
+			
+			
+				$query = "INSERT INTO registeration(fname,lname,password,email,username,activationKey) VALUES('$firstName','$lastName','$password','$email','$username','$activationKey')";
+				$result = mysqli_query($con,$query);
+				//$headers = "From: {$email_client}" . "\r\n";
+				//mail($email,$subject,$message,$headers);
+				
+				
+			}	
+			
+			
+		}
+
+
+	// Register Page End here //
+
+
+	$upgrade = $_GET['upgrade'];
+	if($_GET['active'])
+	{
+		$error = "Your account has been successfully activated";	
+	}
+
+	if(!empty($_POST['login']))
 	{	
-		include 'headers/connect_to_mysql.php';
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 		
@@ -45,148 +104,303 @@ if($_GET['active'])
 		}
 		
 	}
+			//Login Work End Here //
 
+			// Reset Username begin here //
+	
+	if(!empty($_POST['login']))
+	
+	{
+		$email = $_POST['email'];
+		$subject = "Forget Username - {$username_client}";
+		$headers = "From: {$email_client}" . "\r\n" . "CC: zohairhemani1@gmail.com,vipdre12@gmail.com";
+		
+		$query = "SELECT username from registeration WHERE email like '$email'";
+		$result = mysqli_query($con,$query);
+		$count = mysqli_num_rows($result);
+		$users = array();
+		$msg="Username's associated with your email: \n";
+		
+		if($count >= 1 )
+		{
+		
+			$count = 0;
+			while($row = mysqli_fetch_array($result))
+			{
+					
+								
+					$users[$count] = $row['username'];
+					
+					$msg .= $count+1 . " - ". $users[$count]. "\n";
+					$count++;
+					
+					
+					
+			}
+			
+			mail($email,$subject,$msg,$headers);
+			
+			$error = "Your username has been Emailed to you. ";
+		}
+		
+		else
+		{
+			$error = "There is no username registered via this email.";
+		}
+		
+	}
+		// Reset Username end here Here //
+		
+		// Reset Password start here // 
+
+	$pass = $_GET['pass'];
+	$user = $_GET['user'];
+	$email = $_GET['email'];
+
+	$user = $_GET['user'];
+
+	
+if(!empty($_POST['login']))
+{
+
+	$query = "SELECT * FROM reset_password WHERE username like '$user'";
+	$result = mysqli_query($con,$query);
+	$row = mysqli_fetch_array($result);
+	$count = mysqli_num_rows($result);
+	
+	if($count==1)
+	{
+		
+		$resetKey = $row['resetkey'];
+		if($resetKey == $pass)
+		{
+			
+			$password = $_POST['password'];
+			$verifyPassword = $_POST['verifyPassword'];
+			
+			if($password == $verifyPassword)
+			{
+				
+				$query = "UPDATE registeration SET password = '$password' WHERE username = '$user'";
+				mysqli_query($con,$query);
+				$error = "Password Changed.";
+					
+			}
+			else
+			{
+				$error = "Password doesnot match.";	
+			}
+					
+			
+				
+		}
+		
+		else
+		{
+			$error = "Your Activation Link is not correct. Go to this link to reset your password link http://www.bizsocialetc.info/forget-password.php";	
+		}
+		
+			
+	}
+	else
+	{
+		$error = "Username {$user} Doesnot Exist.";	
+	}
+	
+	
+
+}
+	// Reset Password End here//
+	 
+	
+		
 
 
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" >
-  <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <meta name="generator" content="Joomla! - Open Source Content Management" />
-  <title>Login</title>
-  <link rel="stylesheet" href="http://www.bizsocialetc.info/plugins/system/rokbox/themes/clean/rokbox-style.css" type="text/css" />
-  <link rel="stylesheet" href="http://www.bizsocialetc.info/libraries/gantry/css/grid-12.css" type="text/css" />
-  <link rel="stylesheet" href="http://www.bizsocialetc.info/templates/rt_fresco/css/gantry-core.css" type="text/css" />
-  <link rel="stylesheet" href="http://www.bizsocialetc.info/templates/rt_fresco/css/joomla-core.css" type="text/css" />
-  <link rel="stylesheet" href="http://www.bizsocialetc.info/templates/rt_fresco/css/community-a.css" type="text/css" />
-  <link rel="stylesheet" href="http://www.bizsocialetc.info/templates/rt_fresco/css/community-a-extensions.css" type="text/css" />
-  <link rel="stylesheet" href="http://www.bizsocialetc.info/templates/rt_fresco/css/utilities.css" type="text/css" />
-  <link rel="stylesheet" href="http://www.bizsocialetc.info/templates/rt_fresco/css/typography.css" type="text/css" />
-  <link rel="stylesheet" href="http://www.bizsocialetc.info/templates/rt_fresco/css/demo-styles.css" type="text/css" />
-  <link rel="stylesheet" href="http://www.bizsocialetc.info/templates/rt_fresco/css/template.css" type="text/css" />
-  <link rel="stylesheet" href="http://www.bizsocialetc.info/templates/rt_fresco/css/template-webkit.css" type="text/css" />
-  <link rel="stylesheet" href="http://www.bizsocialetc.info/templates/rt_fresco/css/fusionmenu.css" type="text/css" />
-  <link rel="stylesheet" href="css/custom.css" type="text/css" />
-  <style type="text/css"></style>
-  <script src="http://www.bizsocialetc.info/media/system/js/mootools-core.js" type="text/javascript"></script>
-  <script src="http://www.bizsocialetc.info/media/system/js/core.js" type="text/javascript"></script>
-  <script src="http://www.bizsocialetc.info/media/system/js/mootools-more.js" type="text/javascript"></script>
-  <script src="http://www.bizsocialetc.info/plugins/system/rokbox/rokbox.js" type="text/javascript"></script>
-  <script src="http://www.bizsocialetc.info/plugins/system/rokbox/themes/clean/rokbox-config.js" type="text/javascript"></script>
-  <script src="http://www.bizsocialetc.info/templates/rt_fresco/js/gantry-totop.js" type="text/javascript"></script>
-  <script src="http://www.bizsocialetc.info/templates/rt_fresco/js/load-transition.js" type="text/javascript"></script>
-  <script src="http://www.bizsocialetc.info/modules/mod_roknavmenu/themes/fusion/js/fusion.js" type="text/javascript"></script>
-  <script src="http://www.bizsocialetc.info/modules/mod_rokajaxsearch/js/rokajaxsearch.js" type="text/javascript"></script>
-  </head>
-  <body  class="mainstyle-community-a backgroundlevel-high font-family-fresco font-size-is-default logo-type-fresco menu-type-fusionmenu typography-style-light col12 option-com-users menu-login">
-  <div id="rt-page-surround">
-    <div class="main-bg">
-      <div class="rt-container">
-        <div id="rt-drawer">
-          <div class="clear"></div>
-        </div>
-        
-        <?php include 'headers/navigation.php';?>
-        
-        <div id="rt-transition" class="rt-hidden">
-          <div id="rt-main" class="mb8-sa4">
-            <div class="rt-container">
-              <div class="rt-grid-8">
-                <div class="rt-block component-block">
-                  <div class="component-content">
-                    <div class="login">
-                      <h1> Login </h1>
-                      <?php
+
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <title>Login page</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="" name="description" />
+  <meta content="" name="author" />
+  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/style_responsive.css" rel="stylesheet" />
+  <link href="css/style_default.css" rel="stylesheet" id="style_color" />
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body id="login-body">	
+
+  <div class="login-header">
+      <!-- BEGIN LOGO -->
+      <div id="logo" class="center">
+          <img src="img/tsclogo1.png" alt="logo" class="center" />
+      </div>
+      <!-- END LOGO -->
+  </div>
+
+  <!-- BEGIN LOGIN -->
+
+  <div id="login">
+     <?php if(isset($error)){
 	
-	if(isset($error)){
-	
-    echo "<div id='system-message-container'>
-				<dl id='system-message'>
-				<dt class='error'>Error</dt>
-				<dd class='error message'>
-					<ul>
-						<li>$error</li>
-					</ul>
-				</dd>
-				</dl>
-			</div>";
+    echo "<div style='margin-top: -72px;' class='alert'>
+		<button class='close' data-dismiss='alert'>×</button>
+		<strong>Warning!</strong> {$error}.
+	</div>						
+";
 	}
 	
-			?>
-                      <form action="login.php?upgrade=<?php echo $upgrade;?>" method="post">
-                        <fieldset>
-                          <div class="login-fields">
-                            <label id="username-lbl" for="username" class="">User Name</label>
-                            <input type="text" name="username" id="username" class="validate-username" size="25"/>
-                          </div>
-                          <div class="login-fields">
-                            <label id="password-lbl" for="password" class="">Password</label>
-                            <input type="password" name="password" id="password"  class="validate-password" size="25"/>
-                          </div>
-                          <div class="login-fields">
-                            <label id="remember-lbl" for="remember">Remember me</label>
-                            <input id="remember" type="checkbox" name="remember" class="inputbox" value="yes"  alt="Remember me" />
-                          </div>
-                          <button type="submit" class="button" style="height:40px;">Log in</button>
-                          <input type="hidden" name="return" value="Z29vZ2xlLmNvbQ==" />
-                          <input type="hidden" name="3e6db9ec6f650b7fa6c4a00595126676" value="1" />
-                        </fieldset>
-                      </form>
-                    </div>
-                    <div>
-                      <ul>
-                        <li> <a href="forget-password.php"> Forgot your password?</a> </li>
-                        <li> <a href="reset-username.php"> Forgot your username?</a> </li>
-                      </ul>
-                    </div>
+	?>
+
+    <!-- BEGIN LOGIN FORM -->
+    <form id="loginform" method="post" class="form-vertical no-padding no-margin" action="login.php?upgrade=<?php echo $upgrade;?>">
+      <div class="lock">
+          <i class="icon-lock"></i>
+      </div>
+      <div class="control-wrap">
+          <h4>User Login</h4>
+          <div class="control-group">
+              <div class="controls">
+                  <div class="input-prepend">
+                      <span class="add-on"><i class="icon-user"></i></span><input name="username" id="input-username" type="text" 
+                      placeholder="Username" required />
                   </div>
-                  <div class="clear"></div>
-                </div>
               </div>
-              <div class="rt-grid-4 sidebar-right">
-                <div id="rt-sidebar-a">
-                  <div class="bg3 mediumheader">
-                    <div class="rt-block">
-                      <div class="module-surround">
-                        <div class="custom-header" style="background-image:url(http://www.bizsocialetc.info/images/rocketlauncher/frontpage/module-title-bg/bg3.jpg)">
-                          <div class="module-title">
-                            <h2 class="title">Social Card</h2>
-                          </div>
-                        </div>
-                        <div class="module-content">
-                          <div>
-                            <h4 class="nomarginbottom medmargintop">Share With Your Friends</h4>
-                            <p>Once you have created your Free <?php echo $username_client; ?>, you can send to all of your friends and social media contacts. Have fun sharing all day long – All in one place!!</p>
-                          </div>
-                          <!-- <p><a class="readon" href="#"><span>See More</span></a></p> -->
-                          <div class="clear"></div>
-                        </div>
+          </div>
+          <div class="control-group">
+              <div class="controls">
+                  <div class="input-prepend">
+                      <span class="add-on"><i class="icon-key"></i></span><input name="password" id="input-password" 
+                      type="password" placeholder="Password" required />
+                  </div>
+                  <div class="mtop10">
+                      <div class="block-hint pull-left small">
+                          <input type="checkbox" id=""> Remember Me
                       </div>
-                    </div>
+                      <div class="block-hint pull-right">
+                          <a href="javascript:;" id="forget-password">Forgot Password?</a>
+                      </div>
                   </div>
-                </div>
+
+                  <div class="clearfix space5"></div>
               </div>
-              <div class="clear"></div>
-            </div>
+
+          </div>
+      </div>
+
+      <button type="submit" id="login-btn" class="btn btn-block login-btn" name="login" value="1">Button</button>
+                                                      
+ <div style="text-align:center;">Don't have any account?<a href="javascript:;" id="signup" class=""> Sign up now</a></div>
+    </form>
+    <!-- END LOGIN FORM -->        
+    <!-- BEGIN FORGOT PASSWORD FORM action="http://thevectorlab.net/adminlab/index.html"-->
+    <form name="send_password" id="forgotform" class="form-vertical no-padding no-margin hide" action="login.php">
+      <p class="center">Enter your e-mail address below to reset your password.</p>
+      <div class="control-group">
+        <div class="controls">
+ <div class="input-prepend">
+            <span class="add-on"><i class="icon-envelope"></i></span><input id="input-email" name="email" type="email" placeholder="Email" required />
           </div>
         </div>
+        <div class="space20"></div>
       </div>
-    </div>
-    <div class="rt-footer-surround">
-      <div class="rt-container">
-        <div class="rt-footer-inner">
-          <div id="rt-copyright">
-            <div class="rt-grid-4 rt-prefix-4 rt-alpha">
-              <div class="rt-block"> <span class="copytext">&copy; 2013 - Developed by <a href="http://www.mobipowerapps.com">MobiPowerApps</a></span> </div>
-            </div>
-            <div class="rt-grid-4 rt-omega"> <a href="#" class="rt-totop"></a> </div>
-            <div class="clear"></div>
+      <input type="Submit" id="btnForget" class="btn btn-block login-btn" value="Submit" />
+    </form>
+    <!-- END FORGOT PASSWORD FORM -->
+    
+<!-- BEGIN REGISTRATION FORM -->
+<form id="registerform" method="post" class="form-vertical no-padding no-margin hide" action="login.php">
+      <p class="center">Enter your e-mail address below to reset your password.</p>
+      <div class="control-group">
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on"><i class="icon-envelope"></i></span><input class="span4" id="fname" name="first_name" type="text" placeholder="First Name" required />
           </div>
-        </div>
+ <div class="input-prepend">
+            <span class="add-on"><i class="icon-envelope"></i></span><input class="span4" id="lname" name="last_name" type="text" placeholder="Last Name" required />
+          </div>
+  <div class="input-prepend">
+            <span class="add-on"><i class="icon-envelope"></i></span><input class="span4" id="email" name="email" type="email" placeholder="Email" required />
+          </div>
+ <div class="input-prepend">
+            <span class="add-on"><i class="icon-envelope"></i></span><input class="span4" id="password" name="password" type="password" placeholder="Set Password" required />
+          </div>
+ <div class="input-prepend">
+            <span class="add-on"><i class="icon-envelope"></i></span><input class="span4" id="Cpassword" name="c_password" type="password" placeholder="Confirm Password" required />
+          </div>
+ <div class="input-prepend">
+            <span class="add-on"><i class="icon-envelope"></i></span><input class="span4" id="Cpassword" name="username" type="text" placeholder="User Name" required />
+            </div>
+        <div class="control-group">
+          	<p><span class="label label-important">Example</span> david, davidsmith(<font color="#0066FF">www.thesmartercard.com/david</font>)<br />
+            Your username is your identifier on and <b>cannot be changed once you have set it.</b></p>
+          </div>
+      <div class="control-group">
+                  <label class="checkbox">
+       <div class="controls">            
+                  <input required type="checkbox" name="agreement" value="" />I am over 13 years of age AND I agree with the <a href="assets/terms-conditions.doc" target="_blank"><br /> Mobi Power Card Terms of Use and Privacy Policy</a>. </span> <span class="form_row"> &nbsp; </span> <span class="form_row">
+                  </label>
+                  </div>
       </div>
     </div>
+        <div class="space20"></div>
+      </div>
+      <button type="Submit" id="btnSign" class="btn btn-block login-btn" name="register" value="1">REGISTER NOW</button>
+    </form>
   </div>
+  <!-- END LOGIN -->
+  <!-- BEGIN COPYRIGHT -->
+  <div id="login-copyright">
+      2015 &copy; TheSmarterCard.
+  </div>
+  <!-- END COPYRIGHT -->
+  <!-- BEGIN JAVASCRIPTS -->
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="js/jquery.blockui.js"></script>
+  <script src="js/scripts.js"></script>
+  <script>
+    jQuery(document).ready(function() {     
+      App.initLogin();
+    });
+  </script>
+  <script>
+  function checkPass()
+	{
+		//Store the password field objects into variables ...
+		var password = document.getElementById('password');
+		var Cpassword = document.getElementById('Cpassword');
+		//Store the Confimation Message Object ...
+		var message = document.getElementById('confirmMessage');
+		//Set the colors we will be using ...
+		var goodColor = "#66cc66";
+		var badColor = "#ff6666";
+		//Compare the values in the password field
+		//and the confirmation field
+		if(password.value == Cpassword.value){
+			//The passwords match.
+			//Set the color to the good color and inform
+			//the user that they have entered the correct password
+			Cpassword.style.backgroundColor = goodColor;
+			message.style.color = goodColor;
+			message.innerHTML = "Passwords Match!"
+		}else{
+			//The passwords do not match.
+			//Set the color to the bad color and
+			//notify the user.
+			Cpassword.style.backgroundColor = badColor;
+			message.style.color = badColor;
+			message.innerHTML = "Passwords Do Not Match!"
+		}
+	}  
+</script>
+  <!-- END JAVASCRIPTS -->
 </body>
+<!-- END BODY -->
 </html>

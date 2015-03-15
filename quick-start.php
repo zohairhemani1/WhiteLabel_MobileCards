@@ -1,12 +1,17 @@
 <?php 
 
-
+if ($_GET['template'] != 1)
+	{
+		$design = "design2.png";
+	}
+	else 
+	{
+		$design = "design1.png";
+	}
 
 $template = $_GET['template'];
 
 $upgrade = $_GET['upgrade'];
-
-
 
 session_start();
 
@@ -25,9 +30,10 @@ if(isset($_SESSION['username']))
         if($_POST)
 
         {		
-
+		
+			print_r($_POST);
+			
 			include 'headers/image_upload.php';
-
 			include 'headers/logo_upload.php';
 
 			
@@ -96,7 +102,7 @@ if(isset($_SESSION['username']))
 
 			
 
-				if(!isset($_fname) || !isset($_lname) || !isset($_email)  || !isset($_jobTitle) || !isset($_office) || !isset($_mobile) || !isset($_website) ||  !isset($_description)|| !isset($_company) )
+				/*if(!isset($_fname) || !isset($_lname) || !isset($_email)  || !isset($_jobTitle) || !isset($_office) || !isset($_mobile) || !isset($_website) ||  !isset($_description)|| !isset($_company) )
 
 				{
 
@@ -104,7 +110,7 @@ if(isset($_SESSION['username']))
 
 					
 
-				}
+				}*/
 
 				elseif(!isset($_profilePic) || $_profilePic == null || empty($_profilePic))
 
@@ -123,19 +129,21 @@ if(isset($_SESSION['username']))
 					$error = $error . "Upload Company's LOGO.<br>";
 
 				}
+				
 
 				else
 
 				{
 
 					include 'headers/connect_to_mysql.php';
-
+			
+			echo "update query here.";
 					
 
 			$query_details = "UPDATE registeration SET fname = '$_fname', lname = '$_lname', email = '$_email', logo = '$_logo', job = '$_jobTitle', office = '$_office', mobile = '$_mobile', website = '$_website', profilePicture = '$_profilePic', facebook = '$_facebook', twitter = '$_twitter', linked = '$_linked', youtube = '$_youtube', google = '$_google', description = '$_description', company = '$_company', video = '$_video', template = '$template', state = '$_state', city = '$_city', zip = '$_zip', country = '$_country', address = '$_address', gender = '$_gender', referlink = '$_referlink' WHERE username like '$username' ";
 
     		mysqli_query($con,$query_details);
-
+			//header("Location: login.php");
 			header("Location: cards/$username");
 
 				}
@@ -171,307 +179,448 @@ else
 }
 
 ?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" >
+<?php
+	echo $error;
+?>
+<!doctype html>
+<html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="author" content="Super User" />
-<meta name="generator" content="Joomla! - Open Source Content Management" />
-<title><?php echo $username; ?>- Quick Start</title>
-<link rel="stylesheet" href="http://bizsocialetc.info/plugins/system/rokbox/themes/clean/rokbox-style.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/libraries/gantry/css/grid-12.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/gantry-core.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/joomla-core.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/community-a.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/community-a-extensions.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/utilities.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/typography.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/demo-styles.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/template.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/template-webkit.css" type="text/css" />
-<link rel="stylesheet" href="http://bizsocialetc.info/templates/rt_fresco/css/fusionmenu.css" type="text/css" />
-<link rel="stylesheet" href="css/custom.css" type="text/css" />
+   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+   <meta content="" name="description" />
+   <meta content="" name="author" />
+   <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+   <link href="assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+   <link href="assets/bootstrap/css/bootstrap-fileupload.css" rel="stylesheet" />
+   <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+   <link href="css/style.css" rel="stylesheet" />
+   <link href="css/style_responsive.css" rel="stylesheet" />
+   <link href="css/style_default.css" rel="stylesheet" id="style_color" />
+   <link href="assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
+   <link rel="stylesheet" type="text/css" href="assets/gritter/css/jquery.gritter.css" />
+   <link rel="stylesheet" type="text/css" href="assets/chosen-bootstrap/chosen/chosen.css" />
+   <link rel="stylesheet" type="text/css" href="assets/jquery-tags-input/jquery.tagsinput.css" />    
+   <link rel="stylesheet" type="text/css" href="assets/clockface/css/clockface.css" />
+   <link rel="stylesheet" type="text/css" href="assets/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+   <link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />   
+   <link rel="stylesheet" type="text/css" href="css/custom.css" />
+   <link rel="stylesheet" type="text/css" href="assets/bootstrap-timepicker/compiled/timepicker.css" />
+   <link rel="stylesheet" type="text/css" href="assets/bootstrap-colorpicker/css/colorpicker.css" />
+   <link rel="stylesheet" href="assets/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css" />
+   <link rel="stylesheet" href="assets/data-tables/DT_bootstrap.css" />
+   <link rel="stylesheet" type="text/css" href="assets/bootstrap-daterangepicker/daterangepicker.css" />
+   <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+   <link rel="stylesheet" type="text/css" href="css/main.css" />
 
-<!-- Style sheet of Savy Cards -->
+<title>The Smarter Card</title>
 
-<link rel="stylesheet" href="assets/css/reset.css" />
-<link rel="stylesheet" href="assets/css/skeleton.css" />
-<link rel="stylesheet" href="assets/css/global.css" />
-<link rel="stylesheet" href="assets/css/main.css" />
-<style type="text/css"></style>
-<script src="http://bizsocialetc.info/media/system/js/mootools-core.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/media/system/js/core.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/media/system/js/caption.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/media/system/js/mootools-more.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/plugins/system/rokbox/rokbox.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/plugins/system/rokbox/themes/clean/rokbox-config.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/templates/rt_fresco/js/gantry-totop.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/templates/rt_fresco/js/load-transition.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/modules/mod_roknavmenu/themes/fusion/js/fusion.js" type="text/javascript"></script>
-<script src="http://bizsocialetc.info/modules/mod_rokajaxsearch/js/rokajaxsearch.js" type="text/javascript"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-
-<!-- OVERIDING CSS HERE --->
-
-<style>
-.container .two-thirds.column {
-	width:580px;
-	margin-left:20px;
-}
-</style>
 </head>
 
-<body  class="mainstyle-community-a backgroundlevel-high font-family-fresco font-size-is-default logo-type-fresco menu-type-fusionmenu typography-style-light col12 option-com-content menu-styles">
-<div id="rt-page-surround">
-  <div class="main-bg">
-    <div class="rt-container">
-      <div id="rt-drawer">
-        <div class="clear"></div>
-      </div>
-      <?php include 'headers/navigation.php';?>
-      <div id="rt-transition" class="rt-hidden">
-        <div id="rt-showcase">
-          <div class="rt-grid-12 rt-alpha rt-omega">
-            <div class="rt-block">
-              <div class="module-surround">
-                <div class="module-title">
-                  <h2 class="title">QuickStart!</h2>
-                </div>
-                <div class="module-content">
-                  <div id="container" class="container">
-                    <div id="site_overlay"></div>
-                    <div id="internal_wrap" class="row">
-                      <div class="row clearfix">
-                        <div class="two-thirds column alpha">
-                          <div class="savvybox">
-                            <h1>Welcome to QuickStart!</h1>
-                            <hr />
-                            <p>This quick form allows you to provision the basics for your first <?php echo $username_client;?>!</p>
-                            <?php
+<body>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="fixed-top">
+<?php
+include 'headers/menu-top-navigation.php'; 
+?>
+      <!-- END SIDEBAR -->
+      <!-- BEGIN PAGE -->  
+      <div id="main-content">
+         <!-- BEGIN PAGE CONTAINER-->
+         <div class="container-fluid">
+            <!-- BEGIN PAGE HEADER-->   
+            <div class="row-fluid">
+               <div class="span12">
+                   <!-- BEGIN THEME CUSTOMIZER-->
 
-				
+                   <!-- END THEME CUSTOMIZER-->
+                  <h3 class="page-title">
+                     Design Card
+                     <small>Make your own Card</small>
+                  </h3>
+                  <ul class="breadcrumb">
+                       <li>
+                           <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+                       </li>
+                       <li>
+                           <a href="desing.php">Select Template</a><span class="divider">&nbsp;</span>
+                       </li>
+                       <li>
+                           <a href="#">Add Card</a><span class="divider">&nbsp;</span>
+                       </li>
+                      </ul>
 
-				if(isset($error)){
-
-				
-
-				echo "<div id='system-message-container' style='width:400px; margin-left:10px;'>
-
-							<dl id='system-message'>
-
-							<dt class='error'>Error</dt>
-
-							<dd class='error message'>
-
-								<ul>
-
-									<li>$error</li>
-
-								</ul>
-
-							</dd>
-
-							</dl>
-
-						</div>";
-
-				}
-
-	
-
-			?>
-                            <hr />
-                            <form name="register" method="post" action="quick-start.php?template=<?php echo $template;?>" autocomplete="off" enctype="multipart/form-data">
-                              <span class="form_row additional_help">
-                              <label for="username">Username</label>
-                              <input type="text" id="username" name="username" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="<?php echo $username; ?>" />
-                              </span> <span class="form_row">
-                              <label for="first_name">First Name</label>
-                              <input type="text" id="first_name" name="first_name" spellcheck="false" value="<?php echo $_fname; ?>" />
-                              </span> <span class="form_row">
-                              <label for="last_name">Last Name</label>
-                              <input type="text" id="last_name" name="last_name" spellcheck="false" value="<?php echo $_lname; ?>" />
-                              </span> <span class="form_row">
-                              <label for="email">Email</label>
-                              <input type="text" id="email" class="info_bubble" style="position:relative;" title="eg: name@email.com" name="email" spellcheck="false" value="<?php echo $_email; ?>" />
-                              </span>
-                              <label for="email">Gender</label>
-                              <select name="gender">
-                              	<option value="Male"> Male </option>
-                                <option value="Female"> Female </option>
-                              </select>
-                              
-                              <span class="form_row">
-
-                    <label for="email">Logo</label>
-
-                    <input type="file" id="email" class="info_bubble" style="position:relative;" name="logo" spellcheck="false" value="" />
-
-                              </span>  
-                              
-                              <span class="form_row additional_help"> 
-                              
-                              <!--<label for="username">Company</label> -->
-                              
-                              <input type="hidden" id="username" name="company" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="The Smarter Card" />
-                              </span>
-                              <h3><span class="form_row additional_help">
-                                <label for="username">Job Title</label>
-                                <input type="text" id="username" name="job" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="<?php echo $_jobTitle; ?>" />
-                                </span> <span class="form_row additional_help">
-                                <label for="username">Office #</label>
-                                <input type="text" id="username" name="office" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="<?php echo $_office; ?>" />
-                                </span> <span class="form_row additional_help">
-                                <label for="username">Mobile #</label>
-                                <input type="text" id="username" name="mobile" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="<?php echo $_mobile; ?>" />
-                                </span> <span class="form_row additional_help">
-                                <label for="username">Address</label>
-                                <input type="text" id="username" name="address" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="<?php echo $_address; ?>" />
-                                </span> <span class="form_row additional_help">
-                                <label for="username">City</label>
-                                <input type="text" id="username" name="city" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="<?php echo $_city; ?>" />
-                                </span> <span class="form_row additional_help">
-                                <label for="username">Country</label>
-                                <input type="text" id="username" name="country" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="<?php echo $_country; ?>" />
-                                </span> <span class="form_row additional_help">
-                                <label for="username">State</label>
-                                <input type="text" id="username" name="state" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="<?php echo $_state; ?>" />
-                                </span> 
-                                
-                                <span class="form_row additional_help">
-                                <label for="username">Zip</label>
-                                <input type="text" id="username" name="zip" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="<?php echo $_zip; ?>" />
-                                </span>
-                                
-                                <span class="form_row additional_help"> 
-                                
-                                <!-- <label for="username">Website</label> -->
-                                
-                                <input type="hidden" id="username" name="website" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="www.thesmartercard.com" />
-                                </span>  <span class="form_row additional_help">
-                                <label for="username">Profile Picture</label>
-                                <input type="file" id="username" name="file" spellcheck="false" class="info_bubble" value="<?php echo $_profilePic; ?>" />
-                                </span> <span class="form_row additional_help">
-                                <label for="username">Facebook</label>
-                                <input type="text" id="username" name="facebook" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="<?php echo $_facebook;?>" />
-                                </span> <span class="form_row additional_help">
-                                <label for="username">Twitter</label>
-                                <input type="text" id="username" name="twitter" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="<?php echo $_twitter;?>" />
-                                </span> <span class="form_row additional_help">
-                                <label for="username">Linked</label>
-                                <input type="text" id="username" name="linked" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="<?php echo $_linked;?>" />
-                                </span> <span class="form_row additional_help">
-                                <label for="username">Youtube</label>
-                                <input type="text" id="username" name="youtube" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="<?php echo $_youtube;?>" />
-                                </span> <span class="form_row additional_help">
-                                <label for="username">Google Plus</label>
-                                <input type="text" id="username" name="googlePlus" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="<?php echo $_google;?>" />
-                                </span>
-                                
-                                <span class="form_row additional_help"> 
-                                
-                              <label for="username">Youtube Video Link</label>
-                                
-                                <input type="text" id="username" name="video" spellcheck="false" class="info_bubble" title="Numbers and letters. Can not start with a number." value="<?php echo $_video;?>" />
-                                </span>
-                                
-                                 <span class="form_row additional_help">
-                                <label for="username">Company Refer Link</label>
-                                <input type="text" id="username" name="referlink" spellcheck="false" class="info_bubble" value="<?php echo $_referlink;?>" placeholder="Enter your Company Refer Link" />
-                                </span> <span class="form_row additional_help"> 
-                                
-                                <!-- if it's an upgraded form -->
-                                
-                                <?php
-
-								
-
-							if($_GET['upgrade']==1)
-
-							{
-
-								echo "<span class='form_row additional_help'>
-
-                                <label for='username'>Profile Picture</label>
-
-                                <input type='file' id='username' name='file' spellcheck='false' class='info_bubble' value='<?php echo $_profilePic; ?>' /></span>
-
-								
-
-								<span class='form_row additional_help'>
-
-                                <label for='username'>Facebook</label>
-
-                                <input type='text' id='username' name='facebook' spellcheck='false' class='info_bubble' title='Numbers and letters. Can not start with a number.' value='https://www.facebook.com/GenesisGlobalNetworkSA' />
-
-                                </span> <span class='form_row additional_help'>
-
-                                <label for='username'>Twitter</label>
-
-                                <input type='text' id='username' name='twitter' spellcheck='false' class='info_bubble' title='Numbers and letters. Can not start with a number.' value='https://twitter.com/genesisglobalbz' />
-
-                                </span> <span class='form_row additional_help'>
-
-                                <label for='username'>Linked</label>
-
-                                <input type='text' id='username' name='linked' spellcheck='false' class='info_bubble' title='Numbers and letters. Can not start with a number.' value='https://www.linkedin.com/' />
-
-                                </span> <span class='form_row additional_help'>
-
-                                <label for='username'>Youtube</label>
-
-                                <input type='text' id='username' name='youtube' spellcheck='false' class='info_bubble' title='Numbers and letters. Can not start with a number.' value='http://youtu.be/MF85_XI7BsM' />
-
-                                </span> <span class='form_row additional_help'>
-
-                               <label for='username'>Google Plus</label>
-
-                                <input type='text' id='username' name='googlePlus' spellcheck='false' class='info_bubble' title='Numbers and letters. Can not start with a number.' value='https://plus.google.com/115201670001081131210/posts' />
-
-                                </span>";
-
-							}
-
-							
-
-							
-
-							?>
-                                
-                                 <label for="username">Profile</label> 
-                                
-                                <textarea rows="" cols="" name="description" id="profile" class="info_bubble" 
-                                style = "width: 300px; height:100px;" ><?php echo $_description; ?></textarea>
-                                </span> <span class="form_row"> &nbsp;</span> </h3>
-                              <h3 class="nomarginbottom medmargintop"><strong>What You Need To Do</strong> </h3>
-                              <p align="justify"><br />
-                                YOU MUST use the correct link: <strong>http://yourcompany.com/yourid</strong></p>
-                              <p align="justify">Please be sure to click on the links to make sure you put the correct link in the card fields.</p>
-                              <p align="justify">On the Smart Video Card: your referral link is on the  Logo, the Image, and the Second Scroll Banner with a Enroll Button, Linked with the <strong>http://yourcompany.com/yourid</strong> and on the Company Icon by the Facebook Icon.</p>
-                              <span class="form_row"> </span> <span class="form_row"> &nbsp; </span> <span class="form_row">
-                              <input type="submit" value="Continue" id="submit" name="submit" />
-                              </span>
-                            </form>
-                          </div>
-                        </div>
-                        <div class="one-third column sidebar omega"> <img class="rounded shadowed" src="images/design<?php echo $template;?>.png" alt="" /> </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div id="info_bubble"></div>
-                  <div id="site_overlay_container"></div>
-                </div>
-              </div>
+               </div>
             </div>
-            <div class="clear"></div>
-          </div>
-          <div class="clear"></div>
-        </div>
+            <!-- END PAGE HEADER-->
+            <!-- BEGIN PAGE CONTENT-->
+            <div class="row-fluid">
+               <div class="span12">
+                  <!-- BEGIN SAMPLE FORM widget-->   
+                  <div class="widget">
+                     <div class="widget-title">
+                        <h4><i class="icon-reorder"></i> Welcome to QuickStart!</h4>
+                        <span class="tools">
+                           <a href="javascript:;" class="icon-chevron-down"></a>
+                         </span>
+                     </div>
+                     <div class="widget-body form">
+                        <!-- BEGIN FORM-->
+                        <form action="quick-start.php?template=<?php echo $template;?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+                             <div class="control-group">
+                              <label class="control-label">Username</label>
+                           <div class="template" style="right:39px;position:absolute;float:right;">
+									<img src="img/<?php echo $design; ?>"/>
+    							</div>
+                              <div class="controls">
+                                 <input required name="username" value="<?php echo $username; ?>" 
+                                 placeholder="Enter User Name" type="text" class="span6 " />
+                              </div>
+                              
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">First Name</label>
+                              <div class="controls">
+                                 <input required name="first_name" value="<?php echo $_fname; ?>" 
+                                 placeholder="Enter First Name" type="text" class="span6 " />
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">Last Name</label>
+                              <div class="controls">
+                                 <input required name="last_name" value="<?php echo $_lname; ?>" 
+                                 placeholder="Enter Last Name" type="text" class="span6 " />
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">Email</label>
+                              <div class="controls">
+                                 <input required name="email" value="<?php echo $_email; ?>" 
+                                 placeholder="Enter Email " type="email" class="span6 " />
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">Gender</label>
+                              <div class="controls">
+                                 <select class="span6 chosen" name="gender" data-placeholder="Select Your Gender" tabindex="1">
+                                    <option value='Male'>Male</option>
+									<option value='Female'>Female</option>
+                                 </select>
+                                 </div>
+                                 </div>
+                        <div class="control-group">
+                        <div class="control-group">
+                            <label class="control-label">Logo</label>
+                            <div class="controls">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img src="<?php echo $logo_image; ?>" alt="" />
+                                    </div>
+                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                    <div>
+                               <span class="btn btn-file"><span class="fileupload-new">Select image</span>
+                               <span class="fileupload-exists">Change</span>
+                               <input type="file" name="logo" class="default" /></span>
+                                        <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                    </div>
+                                </div>
+								 </div>
+                                </div>
+                             <div class="control-group">
+                              <label class="control-label">Job Title</label>
+                              <div class="controls">
+                                 <input required name="job" value="<?php echo $_jobTitle; ?>" 
+                                 placeholder="Enter Job Title" type="text" class="span6 " />
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">Office No</label>
+                              <div class="controls">
+                                 <input required name="office" value="<?php echo $_office; ?>" 
+                                 placeholder="Enter Office No" type="text" class="span6 "onkeypress="return IsNumeric(event);" 
+                                 ondrop="return false;" onpaste="return false;" />
+ 								   <span id="error" style="color: Red; display: none">* Input digits (0 - 9)</span>
+
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">Mobile No</label>
+                              <div class="controls">
+                                 <input required name="mobile" value="<?php echo $_mobile; ?>" 
+                                 placeholder="Enter Mobile No" type="text" class="span6 " onKeyPress="return isNumeric(event);" 
+                                 ondrop="return false;" onpaste="return false;" />
+ 								  <span id="error1" style="color: Red; display: none">* Input digits (0 - 9)</span>
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">Address</label>
+                              <div class="controls">
+                                 <input required name="address" value="<?php echo $_address; ?>" 
+                                 placeholder="Enter Address" type="text" class="span6 " />
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">City</label>
+                              <div class="controls">
+                                 <input required name="city" value="<?php echo $_city; ?>" 
+                                 placeholder="Enter city" type="text" class="span6 " />
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">Country</label>
+                              <div class="controls">
+                                 <input required name="country" value="<?php echo $_country; ?>" 
+                                 placeholder="Enter Country" type="text" class="span6 " />
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">State</label>
+                              <div class="controls">
+                                 <input required name="state" value="<?php echo $_state; ?>" 
+                                 placeholder="Enter State" type="text" class="span6 " />
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">Zip</label>
+                              <div class="controls">
+                                 <input required name="zip" value="<?php echo $_zip; ?>" 
+                                 placeholder="Enter Zip" type="text" class="span6 " />
+                              </div>
+                           </div>
+                        <div class="control-group">
+                        <div class="control-group">
+                            <label class="control-label">Profile Picture</label>
+                            <div class="controls">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img src="<?php echo $_profilePic; ?>" alt="" />
+                                    </div>
+                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                    <div>
+                               <span class="btn btn-file"><span class="fileupload-new">Select image</span>
+                               <span class="fileupload-exists">Change</span>
+                               <input type="file" name="file" class="default" /></span>
+                                        <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                    </div>
+                                </div>
+								 </div>
+                                </div>
+                             <div class="control-group">
+                              <label class="control-label">Facebook</label>
+                              <div class="controls">
+                                 <input required name="facebook" value="<?php echo $_facebook?>" 
+                                 placeholder="" type="text" class="span6 " />
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">Twitter</label>
+                              <div class="controls">
+                                 <input required name="twitter" value="<?php echo $_twitter?>" 
+                                 placeholder="" type="text" class="span6 " />
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">Linked</label>
+                              <div class="controls">
+                                 <input required name="linked" value="<?php echo $_linkedin?>" 
+                                 placeholder="" type="text" class="span6 " />
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">Youtube</label>
+                              <div class="controls">
+                                 <input required name="youtube" value="<?php echo $_youtube?>" 
+                                 placeholder="" type="text" class="span6 " />
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">Google Plus</label>
+                              <div class="controls">
+                                 <input required name="googlePlus" value="<?php echo $_google?>" 
+                                 placeholder="" type="text" class="span6 " />
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">Youtube Video Link</label>
+                              <div class="controls">
+                                 <input required name="video" value="<?php echo $_video;?>" 
+                                 placeholder="Your Youtbe Video Link " type="text" class="span6 " />
+                              </div>
+                           </div>
+                             <div class="control-group">
+                              <label class="control-label">Company Refer Link</label>
+                              <div class="controls">
+                                 <input required name="referlink" value="" 
+                                 placeholder="Your Company Refer Link" value="<?php echo $_referlink;?>" type="text" class="span6 " />
+                              </div>
+                           </div>
+                     <?php
+                         if($_GET['upgrade']==1)
+							{
+								echo
+								"                        <div class='control-group'>
+                        <div class='control-group'>
+                            <label class='control-label'>Profile Picture</label>
+                            <div class='controls'>
+                                <div class='fileupload fileupload-new' data-provides='fileupload'>
+                                    <div class='fileupload-new thumbnail' style='width: 200px; height: 150px;'>
+                                        <img src='<?php echo $_profilePic; ?>' alt='' />
+                                    </div>
+                                    <div class='fileupload-preview fileupload-exists thumbnail' style='max-width: 200px; max-height: 150px; line-height: 20px;'></div>
+                                    <div>
+                               <span class='btn btn-file'><span class='fileupload-new'>Select image</span>
+                               <span class='fileupload-exists'>Change</span>
+                               <input type='file' name='file' class='default' /></span>
+                                        <a href='#' class='btn fileupload-exists' data-dismiss='fileupload'>Remove</a>
+                                    </div>
+                                </div>
+								 </div>
+                                </div>
+                             <div class='control-group'>
+                              <label class='control-label'>Facebook</label>
+                              <div class='controls'>
+                                 <input required name='facebook' value='<?php echo $_facebook?>' 
+                                 placeholder='' type='text' class='span6 ' />
+                              </div>
+                           </div>
+                             <div class='control-group'>
+                              <label class='control-label'>Twitter</label>
+                              <div class='controls'>
+                                 <input required name='twitter' value='<?php echo $_twitter?>' 
+                                 placeholder='' type='text' class='span6 ' />
+                              </div>
+                           </div>
+                             <div class='control-group'>
+                              <label class='control-label'>Linked</label>
+                              <div class='controls'>
+                                 <input required name='linked' value='<?php echo $_linkedin?>' 
+                                 placeholder='' type='text' class='span6 ' />
+                              </div>
+                           </div>
+                             <div class='control-group'>
+                              <label class='control-label'>Youtube</label>
+                              <div class='controls'>
+                                 <input required name='youtube' value='<?php echo $_youtube?>' 
+                                 placeholder='' type='text' class='span6 ' />
+                              </div>
+                           </div>
+                             <div class='control-group'>
+                              <label class='control-label'>Google Plus</label>
+                              <div class='controls'>
+                                 <input required name='googlePlus' value='<?php echo $_google?>' 
+                                 placeholder='' type='text' class='span6 ' />
+                              </div>
+                           </div>
+                             <div class='control-group'>
+                              <label class='control-label'>Youtube Video Link</label>
+                              <div class='controls'>
+                                 <input required name='video' value='<?php echo $_video;?>' 
+                                 placeholder='Your Youtbe Video Link ' type='text' class='span6 ' />
+                              </div>
+                           </div>
+                             <div class='control-group'>
+                              <label class='control-label'>Company Refer Link</label>
+                              <div class='controls'>
+                                 <input required name='referlink' value='' 
+                                 placeholder='Your Company Refer Link' value='<?php echo $_referlink;?>' type='text' class='span6 ' />
+                              </div>
+                           </div>
+							";
+							}
+                    ?>
+                             <div class="control-group">
+                              <label class="control-label">Profile</label>
+                              <div class="controls">
+                      <textarea required name="description"  placeholder="Enter Your Profile " rows="6" type="text" 
+                      class="span6 "><?php echo $_description; ?></textarea>
+                              </div>
+                           </div>
+                            <div class="controls">
+                           <h3>What You Need To Do</h3>
+                            YOU MUST use the correct link: <b>http://yourcompany.com/yourid</b><br /><br />
+                            Please be sure to click on the links to make sure you put the correct link in the card fields.<br /><br />
+                            On the Smart Video Card: your referral link is on the Logo, the Image, and the Second Scroll <br />
+                            Banner with a Enroll Button, Linked with the <b>http://yourcompany.com/yourid</b> and on the<br /> Company Icon by the Facebook Icon.
+    						</div>
+                <div class="form-actions clearfix">
+				<input type="submit"  class="btn btn-success " />
+                   </div>
+                              </form>
+                            <!-- END FORM-->
+
+                        </div>
+                    </div>
+                    <!-- END EXTRAS widget-->
+                </div>
+            </div>
+
+            <!-- END PAGE CONTENT-->         
+         </div>
+         <!-- END PAGE CONTAINER-->
       </div>
-    </div>
-  </div>
-</div>
+      <!-- END PAGE -->  
+   </div>
+   <!-- END CONTAINER -->
+   <!-- BEGIN FOOTER -->
+  <?php  
+	include 'headers/footer.php';
+	?>
+   <!-- END FOOTER -->
+   <!-- BEGIN JAVASCRIPTS -->    
+   <!-- Load javascripts at bottom, this will reduce page load time -->
+
+ 
+   <script src="js/jquery-1.8.2.min.js"></script>    
+   <script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
+   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="assets/bootstrap/js/bootstrap-fileupload.js"></script>
+   <script src="js/jquery.blockui.js"></script>
+   <!-- ie8 fixes -->
+   <!--[if lt IE 9]>
+   <script src="js/excanvas.js"></script>
+   <script src="js/respond.js"></script>
+   <![endif]-->
+   <script type="text/javascript" src="assets/chosen-bootstrap/chosen/chosen.jquery.min.js"></script>
+   <script type="text/javascript" src="assets/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script> 
+   <script type="text/javascript" src="assets/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+   <script type="text/javascript" src="assets/clockface/js/clockface.js"></script>
+   <script type="text/javascript" src="assets/jquery-tags-input/jquery.tagsinput.min.js"></script>
+   <script type="text/javascript" src="assets/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>
+   <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>   
+   <script type="text/javascript" src="assets/bootstrap-daterangepicker/date.js"></script>
+   <script type="text/javascript" src="assets/bootstrap-daterangepicker/daterangepicker.js"></script> 
+   <script type="text/javascript" src="assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>  
+   <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+   <script type="text/javascript" src="assets/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+   <script src="assets/fancybox/source/jquery.fancybox.pack.js"></script>
+   <script src="js/scripts.js"></script>
+   <script>
+      jQuery(document).ready(function() {       
+         // initiate layout and plugins
+         App.init();
+      });
+   </script>
+      		<script>
+         var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+        function IsNumeric(e) 
+		{
+            var keyCode = e.which ? e.which : e.keyCode
+            var ret = ((keyCode >= 37 && keyCode <= 65 )  || specialKeys.indexOf(keyCode) != -1)            
+			document.getElementById("error").style.display = ret ? "none" : "inline";
+            return ret;
+		}
+		</script>
+ <script>
+ var specialKeys1 = new Array();
+        specialKeys1.push(8); //Backspace
+        function isNumeric(e) 
+		{
+			var keyCode1 = e.which ? e.which : e.keyCode1
+            var ret1 = ((keyCode1 >= 37 && keyCode1 <= 65) || specialKeys1.indexOf(keyCode1) != -1);
+            document.getElementById("error1").style.display = ret1 ? "none" : "inline";
+            return ret1;
+		}
+		</script>
 </body>
 </html>
+
