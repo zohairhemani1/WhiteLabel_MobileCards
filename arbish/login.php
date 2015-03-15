@@ -1,16 +1,82 @@
 <?php
 
-include '../headers/client-details.php';
-include '../headers/connect_to_mysql.php';
+//include 'headers/client-details.php';
+//include 'headers/connect_to_mysql.php';
 
-		$upgrade = $_GET['upgrade'];
+// Register page Start here//
+		if($_POST['register'])
+		{
+			echo "REGISTER PHP: ";
+			$firstName = $_POST['first_name'];
+			$lastName = $_POST['last_name'];
+			$password = $_POST['password'];
+			$confirmPassword = $_POST['c_password'];
+			$email = $_POST['email'];
+			$username = $_POST['username'];
+			$activationKey = md5(microtime().rand());    // Generating Random Activation Key and inserting in database 
+			//$subject = "Please verify your new account at {$username_client}";
+			//$message = "Thank you for registering for {$username_client} Beta!\nPlease click the link below to activate your account.\nClick here to activate your account.\n{$domain_client}/account-activation.php?activate=$activationKey\nClicking on this link will lead you to a page that verifies your successful registration, and will provide a link for customizing your very first {$username_client}!\n\nYour Username Is: {$username}\nYour Password Is: {$password}\n\nTo view and/or share your card, go to {$domain_client}/cards/{$username}\n\n If you have any questions, please email {$username_client} at {$email_client}";
+			
+			echo "USERNAME: ";
+			
+			echo $username;
+			
+			echo "PASSWORD: ";
+			echo $password;
+			
+			$query_username = "SELECT * FROM registeration WHERE username like '$username'";
+			$result_username = mysqli_query($con,$query_username);
+			$count = mysqli_num_rows($result_username);
+			
+			
+			if($password != $confirmPassword)
+			{
+					$error = "Password Doesn't Match";
+			}
+			
+			elseif($count!=0)
+			{
+				$error = "Username Already Exists";
+			}
+			elseif(!(filter_var($email, FILTER_VALIDATE_EMAIL)))
+			{
+					$error = "Email Address Not Valid";
+			}
+			
+			elseif(!isset($_POST['agreement']))
+			{
+				$error = "You must agree to our terms and conditions.";
+			}
+			
+			
+			else
+			{
+			
+			
+				$query = "INSERT INTO registeration(fname,lname,password,email,username,activationKey) VALUES('$firstName','$lastName','$password','$email','$username','$activationKey')";
+				$result = mysqli_query($con,$query);
+				//$headers = "From: {$email_client}" . "\r\n";
+				//mail($email,$subject,$message,$headers);
+				
+				
+			}	
+			
+			
+		}
+
+
+	// Register Page End here //
+
+
+	$upgrade = $_GET['upgrade'];
 	if($_GET['active'])
-{
-	$error = "Your account has been successfully activated";	
-}
+	{
+		$error = "Your account has been successfully activated";	
+	}
 
 	if($_POST['login'])
 	{	
+		echo "LOGIN PHP: ";
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 		
@@ -153,62 +219,7 @@ if($_POST['send_password'])
 }
 	// Reset Password End here//
 	 
-	// Register page Start here//
-		if($_POST['register'])
-	{
-		$firstName = $_POST['first_name'];
-		$lastName = $_POST['last_name'];
-		$password = $_POST['password'];
-		$confirmPassword = $_POST['c_password'];
-		$email = $_POST['email'];
-		$username = $_POST['username'];
-		$activationKey = md5(microtime().rand());    // Generating Random Activation Key and inserting in database 
-		//$subject = "Please verify your new account at {$username_client}";
-		//$message = "Thank you for registering for {$username_client} Beta!\nPlease click the link below to activate your account.\nClick here to activate your account.\n{$domain_client}/account-activation.php?activate=$activationKey\nClicking on this link will lead you to a page that verifies your successful registration, and will provide a link for customizing your very first {$username_client}!\n\nYour Username Is: {$username}\nYour Password Is: {$password}\n\nTo view and/or share your card, go to {$domain_client}/cards/{$username}\n\n If you have any questions, please email {$username_client} at {$email_client}";
-		
-		
-		$query_username = "SELECT * FROM registeration WHERE username like '$username'";
-		$result_username = mysqli_query($con,$query_username);
-		$count = mysqli_num_rows($result_username);
-		
-		
-		if($password != $confirmPassword)
-		{
-				$error = "Password Doesn't Match";
-		}
-		
-		elseif($count!=0)
-		{
-			$error = "Username Already Exists";
-		}
-		elseif(!(filter_var($email, FILTER_VALIDATE_EMAIL)))
-		{
-				$error = "Email Address Not Valid";
-		}
-		
-		elseif(!isset($_POST['agreement']))
-		{
-			$error = "You must agree to our terms and conditions.";
-		}
-		
-		
-		else
-		{
-		
-		
-			$query = "INSERT INTO registeration(fname,lname,password,email,username,activationKey) VALUES('$firstName','$lastName','$password','$email','$username','$activationKey')";
-			$result = mysqli_query($con,$query);
-			//$headers = "From: {$email_client}" . "\r\n";
-			//mail($email,$subject,$message,$headers);
-			
-			
-		}	
-		
-		
-	}
-
-
-	// Register Page End here //
+	
 		
 
 
@@ -310,6 +321,7 @@ if($_POST['send_password'])
       <input type="Submit" id="btnForget" class="btn btn-block login-btn" value="Submit" />
     </form>
     <!-- END FORGOT PASSWORD FORM -->
+    
 <!-- BEGIN REGISTRATION FORM -->
 <form name="register" id="registerform" method="post" class="form-vertical no-padding no-margin hide" action="login.php">
       <p class="center">Enter your e-mail address below to reset your password.</p>
@@ -331,7 +343,7 @@ if($_POST['send_password'])
             <span class="add-on"><i class="icon-envelope"></i></span><input class="span4" id="Cpassword" name="c_password" type="password" placeholder="Confirm Password" required />
           </div>
  <div class="input-prepend">
-            <span class="add-on"><i class="icon-envelope"></i></span><input class="span4" id="Cpassword" name="username" type="password" placeholder="User Name" required />
+            <span class="add-on"><i class="icon-envelope"></i></span><input class="span4" id="Cpassword" name="username" type="text" placeholder="User Name" required />
             </div>
         <div class="control-group">
           	<p><span class="label label-important">Example</span> david, davidsmith(<font color="#0066FF">www.thesmartercard.com/david</font>)<br />
@@ -368,33 +380,33 @@ if($_POST['send_password'])
   </script>
   <script>
   function checkPass()
-{
-    //Store the password field objects into variables ...
-    var password = document.getElementById('password');
-    var Cpassword = document.getElementById('Cpassword');
-    //Store the Confimation Message Object ...
-    var message = document.getElementById('confirmMessage');
-    //Set the colors we will be using ...
-    var goodColor = "#66cc66";
-    var badColor = "#ff6666";
-    //Compare the values in the password field
-    //and the confirmation field
-    if(password.value == Cpassword.value){
-        //The passwords match.
-        //Set the color to the good color and inform
-        //the user that they have entered the correct password
-        Cpassword.style.backgroundColor = goodColor;
-        message.style.color = goodColor;
-        message.innerHTML = "Passwords Match!"
-    }else{
-        //The passwords do not match.
-        //Set the color to the bad color and
-        //notify the user.
-        Cpassword.style.backgroundColor = badColor;
-        message.style.color = badColor;
-        message.innerHTML = "Passwords Do Not Match!"
-    }
-}  
+	{
+		//Store the password field objects into variables ...
+		var password = document.getElementById('password');
+		var Cpassword = document.getElementById('Cpassword');
+		//Store the Confimation Message Object ...
+		var message = document.getElementById('confirmMessage');
+		//Set the colors we will be using ...
+		var goodColor = "#66cc66";
+		var badColor = "#ff6666";
+		//Compare the values in the password field
+		//and the confirmation field
+		if(password.value == Cpassword.value){
+			//The passwords match.
+			//Set the color to the good color and inform
+			//the user that they have entered the correct password
+			Cpassword.style.backgroundColor = goodColor;
+			message.style.color = goodColor;
+			message.innerHTML = "Passwords Match!"
+		}else{
+			//The passwords do not match.
+			//Set the color to the bad color and
+			//notify the user.
+			Cpassword.style.backgroundColor = badColor;
+			message.style.color = badColor;
+			message.innerHTML = "Passwords Do Not Match!"
+		}
+	}  
 </script>
   <!-- END JAVASCRIPTS -->
 </body>

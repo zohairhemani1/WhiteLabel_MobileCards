@@ -1,4 +1,3 @@
-
 <?php 
 
 if ($_GET['template'] != 1)
@@ -342,7 +341,7 @@ include 'headers/menu-top-navigation.php';
                               <label class="control-label">Mobile No</label>
                               <div class="controls">
                                  <input required name="mobile" value="<?php echo $_mobile; ?>" 
-                                 placeholder="Enter Mobile No" type="text" class="span6 " onkeypress="return isNumeric(event);" 
+                                 placeholder="Enter Mobile No" type="text" class="span6 " onKeyPress="return isNumeric(event);" 
                                  ondrop="return false;" onpaste="return false;" />
  								  <span id="error1" style="color: Red; display: none">* Input digits (0 - 9)</span>
                               </div>
