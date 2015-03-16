@@ -30,7 +30,7 @@
 
 
 
-<link href="../assets/css/jquery.bxslider.css" rel="stylesheet" />
+<link href="../assets_card/css/jquery.bxslider.css" rel="stylesheet" />
 
 
 
@@ -50,7 +50,7 @@
 
   <div class="header">
 
-    <div class="logo2"><a href="#"><img src="/assets/upload/<?php echo $_logo;?>" width="100%" alt="logo" /></a></div>
+    <div class="logo2"><a href="#"><img src="../assets/upload/<?php echo $_logo;?>" width="100%" alt="logo" /></a></div>
 
     <div class="people_img"> 
 
@@ -93,7 +93,7 @@
 
     </div>
 
-    <div class="author_img"> <img src="/assets/upload/<?php echo $_profilePic;?>" width="150" alt="" /> </div>
+    <div class="author_img"> <img src="../assets/upload/<?php echo $_profilePic;?>" width="150" alt="" /> </div>
 
     <div class="clear"></div>
 

@@ -6,7 +6,7 @@ $db_username = "root";
 
 $db_pass = "";  
 
-$db_name = "whitelabel"; 
+$db_name = "smartcard"; 
 
 // Run the connection here  
 

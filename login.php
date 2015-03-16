@@ -3,7 +3,6 @@
 include 'headers/client-details.php';
 include 'headers/connect_to_mysql.php';
 
-print_r($_POST);
 
 // Register page Start here//
 		if(!empty($_POST['register']))
@@ -21,8 +20,6 @@ print_r($_POST);
 			$query_username = "SELECT * FROM registeration WHERE username like '$username'";
 			$result_username = mysqli_query($con,$query_username);
 			$count = mysqli_num_rows($result_username);
-			
-			
 			if($password != $confirmPassword)
 			{
 					$error = "Password Doesn't Match";
@@ -231,6 +228,8 @@ if(!empty($_POST['login']))
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/style_responsive.css" rel="stylesheet" />
   <link href="css/style_default.css" rel="stylesheet" id="style_color" />
+  <link rel="stylesheet" href="stylesheet/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css" />
+
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -294,7 +293,7 @@ if(!empty($_POST['login']))
           </div>
       </div>
 
-      <button type="submit" id="login-btn" class="btn btn-block login-btn" name="login" value="1">Button</button>
+      <button type="submit" id="login-btn" class="btn btn-block login-btn" name="login" value="1">Login</button>
                                                       
  <div style="text-align:center;">Don't have any account?<a href="javascript:;" id="signup" class=""> Sign up now</a></div>
     </form>
@@ -316,7 +315,7 @@ if(!empty($_POST['login']))
     
 <!-- BEGIN REGISTRATION FORM -->
 <form id="registerform" method="post" class="form-vertical no-padding no-margin hide" action="login.php">
-      <p class="center">Enter your e-mail address below to reset your password.</p>
+      <p class="center">REGISTER TO WHITE LABEL</p>
       <div class="control-group">
         <div class="controls">
           <div class="input-prepend">
@@ -341,15 +340,17 @@ if(!empty($_POST['login']))
           	<p><span class="label label-important">Example</span> david, davidsmith(<font color="#0066FF">www.thesmartercard.com/david</font>)<br />
             Your username is your identifier on and <b>cannot be changed once you have set it.</b></p>
           </div>
+     <div class="input-prepend">
       <div class="control-group">
                   <label class="checkbox">
        <div class="controls">            
-                  <input required type="checkbox" name="agreement" value="" />I am over 13 years of age AND I agree with the <a href="assets/terms-conditions.doc" target="_blank"><br /> Mobi Power Card Terms of Use and Privacy Policy</a>. </span> <span class="form_row"> &nbsp; </span> <span class="form_row">
+                  <input required class="adjust" type="checkbox" name="agreement" value="" /><div class="notice">I am over 13 years of age AND I agree with the <a href="assets/terms-conditions.doc" target="_blank"><br /> Mobi Power Card Terms of Use and Privacy Policy</a>. </span> <span class="form_row"> &nbsp; </span> <span class="form_row"></span></div>
                   </label>
                   </div>
       </div>
     </div>
-        <div class="space20"></div>
+</div>
+     <div class="space20"></div>
       </div>
       <button type="Submit" id="btnSign" class="btn btn-block login-btn" name="register" value="1">REGISTER NOW</button>
     </form>

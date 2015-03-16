@@ -3500,3 +3500,15 @@ ul.amounts li {
 #nav-width{ 
 width: 50%;
 }
+.adjust {
+    margin-left: 2px !important;
+    margin-top: 16px !important;
+}
+.notice {
+    margin-left: 24px;
+    position: absolute;
+    margin-top: 11.6px;
+}
+#btnSign{
+	margin-top:7px;
+}

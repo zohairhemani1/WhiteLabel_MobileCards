@@ -1,6 +1,6 @@
 <?php
 
-include "../connect_to_mysql.php";
+include "connect_to_mysql.php";
 
 if (mysql_error()) {
     //echo "<h2>Failure:</h2><em>" . mysql_error() . "</em>";
@@ -54,8 +54,7 @@ if ((($_FILES["logo"]["type"] == "image/gif") || ($_FILES["logo"]["type"] == "im
             //echo "Stored in: " . "../upload/" . $_FILES["logo"]["name"];
             
             $logo = $_FILES['logo']['name'];
-            
-        }
+         }
     }
 } else {
     //echo "Invalid file Saving";

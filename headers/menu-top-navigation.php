@@ -95,7 +95,7 @@ echo"
 
          <!-- BEGIN SIDEBAR MENU -->
           <ul class='sidebar-menu'>
-	                  <li><a class='' href='design.php'><span class='icon-box'><i class='icon-user'></i></span>Cards Design</a></li>
+	                  <li><a class='' href='select-template.php'><span class='icon-box'><i class='icon-user'></i></span>Cards Design</a></li>
                       <li><a class='' href='#'><span class='icon-box'><i class='icon-user'></i></span>Contact</a></li>
 
 	</ul>

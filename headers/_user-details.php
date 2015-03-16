@@ -45,9 +45,16 @@ while($row = mysqli_fetch_array($result))
 	$_country = $row['country'];
 	$_address = $row['address'];
 	$_referlink = $row['referlink'];
-	$_gender = $row['gender'];
 	$_zip = $row['zip'];
-    
+	$_gender = $row['gender'];
+    if ($_gender == "Male")
+	{
+	$male = "checked";
+	}
+	else if ($_gender == "Female")
+	{
+	$female = "checked";	
+	}
   }
   
   /*

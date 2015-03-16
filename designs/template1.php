@@ -10,18 +10,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $_fname . " " . $_lname . " - Biz Social Etc"; ?></title>
-<link rel="stylesheet" href="/css/style3.css" type="text/css" />
-<link rel="stylesheet" href="/css/media_queries3.css" type="text/css" />
-<link href="/assets/css/jquery.bxslider.css" rel="stylesheet" />
+<link rel="stylesheet" href="../card_css/style3.css" type="text/css" />
+<link rel="stylesheet" href="../cardcss/media_queries3.css" type="text/css" />
+<link href="../card_assets/css/jquery.bxslider.css" rel="stylesheet" />
 <style type="text/css">
 body {
     background-image: url(/2.jpg);
     background-color: #C6C6C6;
 }
 </style>
-<script src="/headers/jquery-1.10.2.js"></script>
-<script src="/headers/jquery-1.10.2.min.js"></script>
-<script src="/headers/email-validation.js"></script>
+<script src="../headers/jquery-1.10.2.js"></script>
+<script src="../headers/jquery-1.10.2.min.js"></script>
+<script src="../headers/email-validation.js"></script>
 </head>
 
 <body link="#FFFFFF" vlink="#FFFFFF" alink="#FFFFFF">

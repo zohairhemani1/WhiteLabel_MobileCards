@@ -1,4 +1,5 @@
 <?php 
+$_profilePic = "http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image";
 
 if ($_GET['template'] != 1)
 	{
@@ -30,13 +31,9 @@ if(isset($_SESSION['username']))
         if($_POST)
 
         {		
-		
-			print_r($_POST);
-			
+					
 			include 'headers/image_upload.php';
 			include 'headers/logo_upload.php';
-
-			
 
 			$_fname = $_POST['first_name'];
 
@@ -64,7 +61,7 @@ if(isset($_SESSION['username']))
 
 			$_description = $_POST['description'];
 
-			$_company = $_POST['company'];
+			//$_company = $_POST['company'];
 
 			$_video = $_POST['video'];
 
@@ -87,7 +84,6 @@ if(isset($_SESSION['username']))
 			if(isset($profilePic)){
 
 				$_profilePic = $profilePic;
-
 			}
 
 			if(isset($logo)){
@@ -117,8 +113,7 @@ if(isset($_SESSION['username']))
 				{
 
 					$error = $error . "Upload Profile Picture. <br>";
-
-					
+				
 
 				}
 
@@ -127,7 +122,6 @@ if(isset($_SESSION['username']))
 				{
 
 					$error = $error . "Upload Company's LOGO.<br>";
-
 				}
 				
 
@@ -137,12 +131,12 @@ if(isset($_SESSION['username']))
 
 					include 'headers/connect_to_mysql.php';
 			
-			echo "update query here.";
 					
 
-			$query_details = "UPDATE registeration SET fname = '$_fname', lname = '$_lname', email = '$_email', logo = '$_logo', job = '$_jobTitle', office = '$_office', mobile = '$_mobile', website = '$_website', profilePicture = '$_profilePic', facebook = '$_facebook', twitter = '$_twitter', linked = '$_linked', youtube = '$_youtube', google = '$_google', description = '$_description', company = '$_company', video = '$_video', template = '$template', state = '$_state', city = '$_city', zip = '$_zip', country = '$_country', address = '$_address', gender = '$_gender', referlink = '$_referlink' WHERE username like '$username' ";
+			$query_details = "UPDATE registeration SET fname = '$_fname', lname = '$_lname', email = '$_email', logo = '$_logo', job = '$_jobTitle', office = '$_office', mobile = '$_mobile', website = '$_website', profilePicture = '$_profilePic', facebook = '$_facebook', twitter = '$_twitter', linked = '$_linked', youtube = '$_youtube', google = '$_google', description = '$_description', video = '$_video', template = '$template', state = '$_state', city = '$_city', zip = '$_zip', country = '$_country', address = '$_address', gender = '$_gender', referlink = '$_referlink' WHERE username like '$username' ";
 
-    		mysqli_query($con,$query_details);
+    		mysqli_query($con,$query_details)
+			or die ('error');
 			//header("Location: login.php");
 			header("Location: cards/$username");
 
@@ -195,22 +189,20 @@ else
    <link href="css/style.css" rel="stylesheet" />
    <link href="css/style_responsive.css" rel="stylesheet" />
    <link href="css/style_default.css" rel="stylesheet" id="style_color" />
+
    <link href="assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
    <link rel="stylesheet" type="text/css" href="assets/gritter/css/jquery.gritter.css" />
+   <link rel="stylesheet" type="text/css" href="assets/uniform/css/uniform.default.css" />
    <link rel="stylesheet" type="text/css" href="assets/chosen-bootstrap/chosen/chosen.css" />
    <link rel="stylesheet" type="text/css" href="assets/jquery-tags-input/jquery.tagsinput.css" />    
    <link rel="stylesheet" type="text/css" href="assets/clockface/css/clockface.css" />
    <link rel="stylesheet" type="text/css" href="assets/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
-   <link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />   
-   <link rel="stylesheet" type="text/css" href="css/custom.css" />
+   <link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
    <link rel="stylesheet" type="text/css" href="assets/bootstrap-timepicker/compiled/timepicker.css" />
    <link rel="stylesheet" type="text/css" href="assets/bootstrap-colorpicker/css/colorpicker.css" />
    <link rel="stylesheet" href="assets/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css" />
    <link rel="stylesheet" href="assets/data-tables/DT_bootstrap.css" />
    <link rel="stylesheet" type="text/css" href="assets/bootstrap-daterangepicker/daterangepicker.css" />
-   <link rel="stylesheet" type="text/css" href="css/highlight.css" />
-   <link rel="stylesheet" type="text/css" href="css/main.css" />
-
 <title>The Smarter Card</title>
 
 </head>
@@ -237,18 +229,15 @@ include 'headers/menu-top-navigation.php';
                      Design Card
                      <small>Make your own Card</small>
                   </h3>
-                  <ul class="breadcrumb">
+                       <ul class="breadcrumb">
                        <li>
                            <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
                        </li>
                        <li>
-                           <a href="desing.php">Select Template</a><span class="divider">&nbsp;</span>
+                           <a href="select-template.php">Select Template</a> <span class="divider">&nbsp;</span>
                        </li>
-                       <li>
-                           <a href="#">Add Card</a><span class="divider">&nbsp;</span>
-                       </li>
-                      </ul>
-
+                       <li><a href="#">Add Card</a><span class="divider-last">&nbsp;</span></li>
+                   </ul>
                </div>
             </div>
             <!-- END PAGE HEADER-->
@@ -298,22 +287,26 @@ include 'headers/menu-top-navigation.php';
                                  placeholder="Enter Email " type="email" class="span6 " />
                               </div>
                            </div>
-                             <div class="control-group">
+                              <div class="control-group">
                               <label class="control-label">Gender</label>
                               <div class="controls">
-                                 <select class="span6 chosen" name="gender" data-placeholder="Select Your Gender" tabindex="1">
-                                    <option value='Male'>Male</option>
-									<option value='Female'>Female</option>
-                                 </select>
-                                 </div>
-                                 </div>
+                                 <label class="radio">
+                                 <input type="radio" name="gender" value="Male" <?php echo $male; ?> />
+                                 Male
+                                 </label>
+                                 <label class="radio">
+                                 <input type="radio" name="gender" value="Female" <?php echo $female; ?>/>
+                                 Female
+                                 </label>                               
+                              </div>
+                           </div>
                         <div class="control-group">
                         <div class="control-group">
                             <label class="control-label">Logo</label>
                             <div class="controls">
                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                     <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                        <img src="<?php echo $logo_image; ?>" alt="" />
+                                        <img src="assets/upload/<?php echo $logo; ?>" alt="" />
                                     </div>
                                     <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                     <div>
@@ -392,7 +385,7 @@ include 'headers/menu-top-navigation.php';
                             <div class="controls">
                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                     <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                        <img src="<?php echo $_profilePic; ?>" alt="" />
+                                        <img src="assets/upload/<?php echo $_profilePic; ?>" alt="" />
                                     </div>
                                     <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                     <div>
@@ -457,7 +450,7 @@ include 'headers/menu-top-navigation.php';
                          if($_GET['upgrade']==1)
 							{
 								echo
-								"                        <div class='control-group'>
+								" <div class='control-group'>
                         <div class='control-group'>
                             <label class='control-label'>Profile Picture</label>
                             <div class='controls'>
@@ -530,8 +523,7 @@ include 'headers/menu-top-navigation.php';
                              <div class="control-group">
                               <label class="control-label">Profile</label>
                               <div class="controls">
-                      <textarea required name="description"  placeholder="Enter Your Profile " rows="6" type="text" 
-                      class="span6 "><?php echo $_description; ?></textarea>
+                      <textarea required name="description"  placeholder="Enter Your Profile " rows="6" type="text" class="span6 "><?php echo $_description; ?></textarea>
                               </div>
                            </div>
                             <div class="controls">
@@ -567,8 +559,6 @@ include 'headers/menu-top-navigation.php';
    <!-- END FOOTER -->
    <!-- BEGIN JAVASCRIPTS -->    
    <!-- Load javascripts at bottom, this will reduce page load time -->
-
- 
    <script src="js/jquery-1.8.2.min.js"></script>    
    <script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -580,6 +570,7 @@ include 'headers/menu-top-navigation.php';
    <script src="js/respond.js"></script>
    <![endif]-->
    <script type="text/javascript" src="assets/chosen-bootstrap/chosen/chosen.jquery.min.js"></script>
+   <script type="text/javascript" src="assets/uniform/jquery.uniform.min.js"></script>
    <script type="text/javascript" src="assets/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script> 
    <script type="text/javascript" src="assets/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
    <script type="text/javascript" src="assets/clockface/js/clockface.js"></script>
@@ -593,6 +584,7 @@ include 'headers/menu-top-navigation.php';
    <script type="text/javascript" src="assets/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
    <script src="assets/fancybox/source/jquery.fancybox.pack.js"></script>
    <script src="js/scripts.js"></script>
+      <script src="js/table-editable.js"></script>
    <script>
       jQuery(document).ready(function() {       
          // initiate layout and plugins
