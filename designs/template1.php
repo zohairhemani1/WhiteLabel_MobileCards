@@ -27,7 +27,7 @@ body {
 <body link="#FFFFFF" vlink="#FFFFFF" alink="#FFFFFF">
 <div class="container">
   <div class="header">
-    <div class="logo"> <a class="referlink" href="<?php echo $_referlink; ?>" target="_blank"> <img src="/assets/upload/<?php echo $_logo;?>" width="391" alt="logo" /> </a> </div>
+    <div class="logo"> <a class="referlink" href="<?php echo $_referlink; ?>" target="_blank"> <img src="../assets/upload/<?php echo $_logo;?>" width="391" alt="logo" /> </a> </div>
   </div>
   <div class="content_inner">
     <div class="video_sec">
@@ -61,7 +61,7 @@ body {
         </p>
         </address>
       </div>
-      <div class="author_img"> <a class="referlink" href="<?php echo $_referlink; ?>" target="_blank"> <img src="/assets/upload/<?php echo $_profilePic;?>" width="135" alt="author image" /></a> </div>
+      <div class="author_img"> <a class="referlink" href="<?php echo $_referlink; ?>" target="_blank"> <img src="../assets/upload/<?php echo $_profilePic;?>" width="135" alt="author image" /></a> </div>
       <div class="clear"></div>
       <p class="disc"><?php echo $_description; ?> </p>
     </div>

@@ -12,6 +12,7 @@ $username = $_SESSION['username'];
 else
 {
 	$username = $_GET['username'];		
+
 }
 
 $result = mysqli_query($con,"SELECT * FROM registeration

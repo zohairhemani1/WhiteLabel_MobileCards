@@ -60,4 +60,3 @@ if ((($_FILES["file"]["type"] == "image/gif") || ($_FILES["file"]["type"] == "im
 } else {
     //echo "Invalid file Saving";
 }
-?>

@@ -1,13 +1,13 @@
 <?php 
-$_profilePic = "http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image";
 
 if ($_GET['template'] != 1)
 	{
-		$design = "design2.png";
+	$design = "design2.png";
 	}
 	else 
 	{
-		$design = "design1.png";
+	$design = "design1.png";
+	
 	}
 
 $template = $_GET['template'];
@@ -31,13 +31,13 @@ if(isset($_SESSION['username']))
         if($_POST)
 
         {		
-					
+	
 			include 'headers/image_upload.php';
 			include 'headers/logo_upload.php';
 
-			$_fname = $_POST['first_name'];
+			$_fname = $_POST['fname'];
 
-			$_lname = $_POST['last_name'];
+			$_lname = $_POST['lname'];
 
 			$_email = $_POST['email'];
 
@@ -61,8 +61,6 @@ if(isset($_SESSION['username']))
 
 			$_description = $_POST['description'];
 
-			//$_company = $_POST['company'];
-
 			$_video = $_POST['video'];
 
 			$_city = $_POST['city'];
@@ -74,7 +72,7 @@ if(isset($_SESSION['username']))
 			$_address = $_POST['address'];
 
 			$_referlink = $_POST['referlink'];
-			
+	
 			$_gender = $_POST['gender'];
 			
 			$_zip = $_POST['zip'];
@@ -82,23 +80,32 @@ if(isset($_SESSION['username']))
 			
 
 			if(isset($profilePic)){
-
 				$_profilePic = $profilePic;
 			}
-
 			if(isset($logo)){
-
 				$_logo = $logo;
+			}
+			if(!empty($_profilePic) || !empty($_logo)){
+			
+					include 'headers/connect_to_mysql.php';
+			$query_details = "UPDATE registeration SET fname = '$_fname', lname = '$_lname', email = '$_email', logo = '$_logo', job = '$_jobTitle', office = '$_office', mobile = '$_mobile', website = '$_website', profilePicture = '$_profilePic', facebook = '$_facebook', twitter = '$_twitter', linked = '$_linked', youtube = '$_youtube', google = '$_google', description = '$_description', video = '$_video', template = '$template', state = '$_state', city = '$_city', zip = '$_zip', country = '$_country', address = '$_address', gender = '$_gender', referlink = '$_referlink' WHERE username like '$username' ";
+		mysqli_query($con,$query_details)
+		or die ('error');
+			$url = "cards/$username";
+		$redirect = 1 ;
 
 			}
+			else
+			{
+				if(empty($_profilePic)){
+					$error =  $error . "Upload Profile Picture. <br />";
+				}else if(empty($_logo)){
+					$error =  $error . "Upload Company's LOGO.<br>";
+				}
+				echo $error;
+			}
 
-			
-
-			
-
-			
-
-				/*if(!isset($_fname) || !isset($_lname) || !isset($_email)  || !isset($_jobTitle) || !isset($_office) || !isset($_mobile) || !isset($_website) ||  !isset($_description)|| !isset($_company) )
+	/*if(!isset($_fname) || !isset($_lname) || !isset($_email)  || !isset($_jobTitle) || !isset($_office) || !isset($_mobile) || !isset($_website) ||  !isset($_description)|| !isset($_company) )
 
 				{
 
@@ -107,41 +114,6 @@ if(isset($_SESSION['username']))
 					
 
 				}*/
-
-				elseif(!isset($_profilePic) || $_profilePic == null || empty($_profilePic))
-
-				{
-
-					$error = $error . "Upload Profile Picture. <br>";
-				
-
-				}
-
-				elseif(!isset($_logo) || $_logo == null || empty($_logo))
-
-				{
-
-					$error = $error . "Upload Company's LOGO.<br>";
-				}
-				
-
-				else
-
-				{
-
-					include 'headers/connect_to_mysql.php';
-			
-					
-
-			$query_details = "UPDATE registeration SET fname = '$_fname', lname = '$_lname', email = '$_email', logo = '$_logo', job = '$_jobTitle', office = '$_office', mobile = '$_mobile', website = '$_website', profilePicture = '$_profilePic', facebook = '$_facebook', twitter = '$_twitter', linked = '$_linked', youtube = '$_youtube', google = '$_google', description = '$_description', video = '$_video', template = '$template', state = '$_state', city = '$_city', zip = '$_zip', country = '$_country', address = '$_address', gender = '$_gender', referlink = '$_referlink' WHERE username like '$username' ";
-
-    		mysqli_query($con,$query_details)
-			or die ('error');
-			//header("Location: login.php");
-			header("Location: cards/$username");
-
-				}
-
 			
 
 			
@@ -173,9 +145,7 @@ else
 }
 
 ?>
-<?php
-	echo $error;
-?>
+
 <!doctype html>
 <html>
 <head>
@@ -204,7 +174,12 @@ else
    <link rel="stylesheet" href="assets/data-tables/DT_bootstrap.css" />
    <link rel="stylesheet" type="text/css" href="assets/bootstrap-daterangepicker/daterangepicker.css" />
 <title>The Smarter Card</title>
-
+   <script>
+   if(<?php echo $redirect; ?> == 1){
+	window.location.href = '<?php echo $url; ?>';
+   }
+	</script>
+ 
 </head>
 
 <body>
@@ -269,14 +244,14 @@ include 'headers/menu-top-navigation.php';
                              <div class="control-group">
                               <label class="control-label">First Name</label>
                               <div class="controls">
-                                 <input required name="first_name" value="<?php echo $_fname; ?>" 
+                                 <input required name="fname" value="<?php echo $_fname; ?>" 
                                  placeholder="Enter First Name" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Last Name</label>
                               <div class="controls">
-                                 <input required name="last_name" value="<?php echo $_lname; ?>" 
+                                 <input required name="lname" value="<?php echo $_lname; ?>" 
                                  placeholder="Enter Last Name" type="text" class="span6 " />
                               </div>
                            </div>
@@ -306,7 +281,8 @@ include 'headers/menu-top-navigation.php';
                             <div class="controls">
                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                     <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                        <img src="assets/upload/<?php echo $logo; ?>" alt="" />
+                                        <img src="<?php if($_logo == null){echo "http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image";}
+										else {echo "assets/upload/".$_logo;} ?>" alt="" />
                                     </div>
                                     <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                     <div>
@@ -385,7 +361,8 @@ include 'headers/menu-top-navigation.php';
                             <div class="controls">
                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                     <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                        <img src="assets/upload/<?php echo $_profilePic; ?>" alt="" />
+                                        <img src="<?php if($_profilePic == null){echo "http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image";}
+										else {echo "assets/upload/".$_profilePic;} ?>" alt="" />
                                     </div>
                                     <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                     <div>
@@ -534,7 +511,7 @@ include 'headers/menu-top-navigation.php';
                             Banner with a Enroll Button, Linked with the <b>http://yourcompany.com/yourid</b> and on the<br /> Company Icon by the Facebook Icon.
     						</div>
                 <div class="form-actions clearfix">
-				<input type="submit"  class="btn btn-success " />
+					<input type="submit"  class="btn btn-success " />
                    </div>
                               </form>
                             <!-- END FORM-->

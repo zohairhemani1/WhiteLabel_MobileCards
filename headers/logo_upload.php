@@ -59,4 +59,3 @@ if ((($_FILES["logo"]["type"] == "image/gif") || ($_FILES["logo"]["type"] == "im
 } else {
     //echo "Invalid file Saving";
 }
-?>
