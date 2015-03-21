@@ -235,10 +235,10 @@ if(!empty($_POST['login']))
 <!-- BEGIN BODY -->
 <body id="login-body">	
 
-  <div class="login-header">
+  <div id="login_height" class="login-header">
       <!-- BEGIN LOGO -->
-      <div id="logo" class="center">
-          <img src="img/tsclogo1.png" alt="logo" class="center" />
+      <div id="logo_white" class="center">
+          <img src="img/tsclogo1.png" style="" alt="logo" class="center" />
       </div>
       <!-- END LOGO -->
   </div>
