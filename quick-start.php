@@ -518,6 +518,8 @@ include 'headers/menu-top-navigation.php';
 
                         </div>
                     </div>
+               </div>
+               </div>
                     <!-- END EXTRAS widget-->
                 </div>
             </div>
@@ -533,6 +535,7 @@ include 'headers/menu-top-navigation.php';
   <?php  
 	include 'headers/footer.php';
 	?>
+    
    <!-- END FOOTER -->
    <!-- BEGIN JAVASCRIPTS -->    
    <!-- Load javascripts at bottom, this will reduce page load time -->
