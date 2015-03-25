@@ -113,9 +113,10 @@ include 'headers/menu-top-navigation.php';
 									<hr class="clearfix" />
 									<!-- BEGIN GALLERY MANAGER LISTING-->
 									<div class="row-fluid">
-										<div class="span2">
+										<div id="image1" class="span2">
 											<div class="thumbnail">
-												<div class="item">
+												
+                                                <div class="item">
 						<p><a href="quick-start.php?template=1"><div style="font-size:14px">Click here for your<br>
                              White Template BIZ</div> </a></p>
                                                     <a class="fancybox-button" data-rel="fancybox-button" title="White Template Bizz" href="img/design1.png">
@@ -125,9 +126,10 @@ include 'headers/menu-top-navigation.php';
 														</div>
 													</a>
 												</div>
+                                                
 											</div>
 										</div>
-										<div class="span2">
+										<div id="image2" class="span2">
 											<div class="thumbnail">
 												<div class="item">
 						<p><a href="quick-start.php?template=2"><div style="font-size:14px">Click here for your<br>

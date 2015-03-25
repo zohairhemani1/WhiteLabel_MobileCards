@@ -3521,3 +3521,13 @@ width: 50%;
 #btnSign{
 	margin-top:7px;
 }
+#image1 {
+    left: 33% !important;
+    right: 0px !important;
+    position: relative;
+}
+#image2 {
+    left: 40% !important;
+    right: 0px !important;
+    position: relative;
+}
