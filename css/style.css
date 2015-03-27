@@ -3522,12 +3522,12 @@ width: 50%;
 	margin-top:7px;
 }
 #image1 {
-    left: 33% !important;
-    right: 0px !important;
-    position: relative;
+	position: relative;
+	margin-right: 0px;
+	margin-left: 33%;
 }
 #image2 {
-    left: 40% !important;
     right: 0px !important;
     position: relative;
+    margin-left: 40px !important;
 }

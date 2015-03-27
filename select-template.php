@@ -1,10 +1,16 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
 
-<!doctype html>
-<html>
+<!-- Mirrored from thevectorlab.net/adminlab/gallery.html by HTTrack Website Copier/3.x [XR&CO'2013], Tue, 04 Nov 2014 07:56:34 GMT -->
 <head>
-   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-   <meta content="" name="description" />
-   <meta content="" name="author" />
+	<meta charset="utf-8" />
+	<title>Gallery</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
    <link href="assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
    <link href="assets/bootstrap/css/bootstrap-fileupload.css" rel="stylesheet" />
@@ -28,155 +34,176 @@
    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
    <link rel="stylesheet" type="text/css" href="css/main.css" />
 
-<title>The Smarter Card</title>
-
 </head>
-
-<body>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="fixed-top">
 <?php
 include 'headers/menu-top-navigation.php'; 
-?>
-      <!-- END SIDEBAR -->
-      <!-- BEGIN PAGE -->  
-      <div id="main-content">
-         <!-- BEGIN PAGE CONTAINER-->
-         <div class="container-fluid">
-            <!-- BEGIN PAGE HEADER-->   
-            <div class="row-fluid">
-               <div class="span12">
-                   <!-- BEGIN THEME CUSTOMIZER-->
-
-                   <!-- END THEME CUSTOMIZER-->
-                  <h3 class="page-title">
-                     Smart Cart
-                     <small>Select Your Card Design</small>
-                  </h3>
-                  <ul class="breadcrumb">
-                       <li>
-                           <a href="index.php"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
-                       </li>
-                       <li><a href="#">Select Template</a><span class="divider-last">&nbsp;</span></li>
-                   </ul>
-
-               </div>
-            </div>
-            <!-- END PAGE HEADER-->
-            <!-- BEGIN PAGE CONTENT-->
-            <div class="row-fluid">
-               <div class="span12">
-                  <!-- BEGIN SAMPLE FORM widget-->   
-                  <div class="widget">
-                     <div class="widget-title">
-                        <h4><i class="icon-reorder"></i>Select Design</h4>
-                        <span class="tools">
-                           <a href="javascript:;" class="icon-chevron-down"></a>
-                         </span>
-                     </div>
-                        <div class="widget-body">
-                           <div class="row-fluid">
-                              <div id="main-design" style="margin-left: 25%;" class="span6">
-                                          <ul class="nav nav-tabs">
-                                       <li id="nav-width" class="active"><a href="#tab_1_1" data-toggle="tab">Select White Template</a></li>
-                                       <li id="nav-width"><a href="#tab_1_2" data-toggle="tab">Select Blue Template</a></li>
-                                    </ul>
-                                    <div class="tab-content">
-                                       <div class="tab-pane active" id="tab_1_1">
-                             <div class="">
-							<p><a href="quick-start.php?template=2"><div style="font-size:17px">Click here for your<br>
-                             White Template BIZ<br> BUSINESS CARD</div> </a></p>
-
-                                    <img src="img/design2.png"/>
-    							</div>                                       
-                                </div>
-                                       <div class="tab-pane" id="tab_1_2">         
-                          	<div style="float:right" class="">
-								<p><a href="quick-start.php?template=1"><div style="font-size:17px">Click here for your<br>
-                                 Blue Template BIZ<br> BUSINESS CARD</div> </a></p>               
-                                    <img src="img/design1.png"/>
-                                </div>                          
-                                     </acenter>
-                                       </div>
-                                    </div>
-                                 </div>
-
-                        </div>
-                  </div>
-               </div>
-            </div>
+?>			
+<!-- END SIDEBAR MENU -->
 		</div>
+		<!-- END SIDEBAR -->
+		<!-- BEGIN PAGE -->
+		<div id="main-content">
+			<!-- BEGIN PAGE CONTAINER-->
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					<div class="span12">
+                        <!-- BEGIN THEME CUSTOMIZER-->
+                        <div id="theme-change" class="hidden-phone">
+                            <i class="icon-cogs"></i>
+                            <span class="settings">
+                                <span class="text">Theme:</span>
+                                <span class="colors">
+                                    <span class="color-default" data-style="default"></span>
+                                    <span class="color-gray" data-style="gray"></span>
+                                    <span class="color-purple" data-style="purple"></span>
+                                    <span class="color-navy-blue" data-style="navy-blue"></span>
+                                </span>
+                            </span>
+                        </div>
+                        <!-- END THEME CUSTOMIZER-->
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->				    			
+						<h3 class="page-title">
+							Gallery
+							<small>simple gallery</small>
+						</h3>
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#"><i class="icon-home"></i></a><span class="divider">&nbsp;</span>
+                            </li>
+                            <li><a href="#">Components</a><span class="divider">&nbsp;</span></li>
+                            <li><a href="#">Gallery</a><span class="divider-last">&nbsp;</span></li>
+                        </ul>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+					</div>
+				</div>
+				<!-- END PAGE CONTENT-->
+				<!-- BEGIN PAGE CONTENT-->
+				<div id="page">
+					<!--BEGIN:BODY-->	
+					<div class="row-fluid">
+						<div class="span12">
+							<!-- BEGIN GALLERY MANAGER PORTLET-->
+							<div class="widget">
+								<div class="widget-title">
+									<h4><i class="icon-camera-retro"></i>Gallery</h4>
+									<span class="tools">
+									<a href="javascript:;" class="icon-chevron-down"></a>
+									<a href="javascript:;" class="icon-remove"></a>
+									</span>							
+								</div>
+								<div class="widget-body">
+									<!-- BEGIN GALLERY MANAGER PANEL-->
+									<div class="row-fluid">
+										<div class="span4">
+											<h5> Category 1</h5>
+										</div>
+										<div class="span8">
+											<div class="pull-right">
+												<select data-placeholder="Select Category" class="chosen" tabindex="-1" id="inputCategory">
+													<option value="0"></option>
+													<option value="1">All</option>
+													<option value="1">Category 1</option>
+													<option value="1">Category 2</option>
+													<option value="1">Category 3</option>
+													<option value="1">Category 4</option>
+												</select>
+												<select data-placeholder="Sort By" class="chosen input-small" tabindex="-1" id="inputSort">
+													<option value="0"></option>
+													<option value="1">Date</option>
+													<option value="1">Author</option>
+													<option value="1">Title</option>
+													<option value="1">Hits</option>
+												</select>
+												<div class="clearfix space5"></div>
+											</div>
+										</div>
+									</div>
+									<!-- END GALLERY MANAGER PANEL-->
+									<hr class="clearfix" />
+									<!-- BEGIN GALLERY MANAGER LISTING-->
+									<div class="row-fluid">
+										<div id="image1" class="span2">
+											<div class="thumbnail">
+												
+                                                <div class="item">
+						<p><a href="quick-start.php?template=1"><div style="font-size:14px">Click here for your<br>
+                             White Template BIZ</div> </a></p>
+                                                    <a class="fancybox-button" data-rel="fancybox-button" title="White Template Bizz" href="img/design1.png">
+                                                        <div class="zoom">
+															<img src="img/design1.png" style="width:200px;height:290px" alt="design1" />
+															<div class="zoom-icon"></div>
+														</div>
+													</a>
+												</div>
+                                                
+											</div>
+										</div>
+										<div id="image2" class="span2">
+											<div class="thumbnail">
+												<div class="item">
+						<p><a href="quick-start.php?template=2"><div style="font-size:14px">Click here for your<br>
+                             Vlue Template BIZ</div> </a></p>
+													<a class="fancybox-button" data-rel="fancybox-button" title="Photo" href="img/design2.png">
+														<div class="zoom">
+															<img src="img/design2.png" alt="design2" />
+															<div class="zoom-icon"></div>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									</div>
+									<!-- END GALLERY MANAGER LISTING-->
+									<!-- BEGIN GALLERY MANAGER PAGINATION-->
+
+									<!-- END GALLERY MANAGER PAGINATION-->
+								</div>
+							</div>
+							<!-- END GALLERY MANAGER PORTLET-->
+						</div>
+					</div>
+					<!--END:BODY-->
+				</div>
+				<!-- END PAGE CONTENT-->
+			</div>
+			<!-- END PAGE CONTAINER-->			
+		</div>
+		<!-- END PAGE -->	 	
 	</div>
-</div>
-            <!-- END PAGE CONTENT-->         
-         </div>
-         <!-- END PAGE CONTAINER-->
-      </div>
-      <!-- END PAGE -->  
-   </div>
-   <!-- END CONTAINER -->
-   <!-- BEGIN FOOTER -->
+	<!-- END CONTAINER -->
+	<!-- BEGIN FOOTER -->
   <?php  
 	include 'headers/footer.php';
 	?>
-   <!-- END FOOTER -->
-   <!-- BEGIN JAVASCRIPTS -->    
-   <!-- Load javascripts at bottom, this will reduce page load time -->
-
- 
-   <script src="js/jquery-1.8.2.min.js"></script>    
-   <script type="text/javascript" src="assets/ckeditor/ckeditor.js"></script>
-   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-   <script type="text/javascript" src="assets/bootstrap/js/bootstrap-fileupload.js"></script>
-   <script src="js/jquery.blockui.js"></script>
-   <!-- ie8 fixes -->
-   <!--[if lt IE 9]>
-   <script src="js/excanvas.js"></script>
-   <script src="js/respond.js"></script>
-   <![endif]-->
-   <script type="text/javascript" src="assets/chosen-bootstrap/chosen/chosen.jquery.min.js"></script>
-   <script type="text/javascript" src="assets/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script> 
-   <script type="text/javascript" src="assets/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
-   <script type="text/javascript" src="assets/clockface/js/clockface.js"></script>
-   <script type="text/javascript" src="assets/jquery-tags-input/jquery.tagsinput.min.js"></script>
-   <script type="text/javascript" src="assets/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>
-   <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>   
-   <script type="text/javascript" src="assets/bootstrap-daterangepicker/date.js"></script>
-   <script type="text/javascript" src="assets/bootstrap-daterangepicker/daterangepicker.js"></script> 
-   <script type="text/javascript" src="assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>  
-   <script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-   <script type="text/javascript" src="assets/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-   <script src="assets/fancybox/source/jquery.fancybox.pack.js"></script>
-   <script src="js/scripts.js"></script>
-   <script>
-      jQuery(document).ready(function() {       
-         // initiate layout and plugins
-         App.init();
-      });
-   </script>
-      		<script>
-         var specialKeys = new Array();
-        specialKeys.push(8); //Backspace
-        function IsNumeric(e) 
-		{
-            var keyCode = e.which ? e.which : e.keyCode
-            var ret = ((keyCode >= 37 && keyCode <= 65 )  || specialKeys.indexOf(keyCode) != -1)            
-			document.getElementById("error").style.display = ret ? "none" : "inline";
-            return ret;
-		}
-		</script>
- <script>
- var specialKeys1 = new Array();
-        specialKeys1.push(8); //Backspace
-        function isNumeric(e) 
-		{
-			var keyCode1 = e.which ? e.which : e.keyCode1
-            var ret1 = ((keyCode1 >= 37 && keyCode1 <= 65) || specialKeys1.indexOf(keyCode1) != -1);
-            document.getElementById("error1").style.display = ret1 ? "none" : "inline";
-            return ret1;
-		}
-		</script>
+	<!-- END FOOTER -->
+	<!-- BEGIN JAVASCRIPTS -->
+	<!-- Load javascripts at bottom, this will reduce page load time -->
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/fancybox/source/jquery.fancybox.pack.js"></script>
+	<script src="js/jquery.blockui.js"></script>
+	<!-- ie8 fixes -->
+	<!--[if lt IE 9]>
+	<script src="js/excanvas.js"></script>
+	<script src="js/respond.js"></script>
+	<![endif]-->
+	<script type="text/javascript" src="assets/uniform/jquery.uniform.min.js"></script>	
+	<script type="text/javascript" src="assets/chosen-bootstrap/chosen/chosen.jquery.min.js"></script>
+	<script src="js/scripts.js"></script>
+	<script>
+		jQuery(document).ready(function() {			
+			// initiate layout and plugins
+			App.init();
+		});
+	</script>
+	<!-- END JAVASCRIPTS -->
 </body>
-</html>
+<!-- END BODY -->
 
+<!-- Mirrored from thevectorlab.net/adminlab/gallery.html by HTTrack Website Copier/3.x [XR&CO'2013], Tue, 04 Nov 2014 07:57:43 GMT -->
+</html>

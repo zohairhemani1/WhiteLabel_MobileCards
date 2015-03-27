@@ -236,7 +236,7 @@ include 'headers/menu-top-navigation.php';
 									<img src="img/<?php echo $design; ?>"/>
     							</div>
                               <div class="controls">
-                                 <input required name="username" value="<?php echo $username; ?>" 
+                                 <input disabled name="username" value="<?php echo $username; ?>" 
                                  placeholder="Enter User Name" type="text" class="span6 " />
                               </div>
                               
@@ -244,21 +244,21 @@ include 'headers/menu-top-navigation.php';
                              <div class="control-group">
                               <label class="control-label">First Name</label>
                               <div class="controls">
-                                 <input required name="fname" value="<?php echo $_fname; ?>" 
+                                 <input name="fname" value="<?php echo $_fname; ?>" 
                                  placeholder="Enter First Name" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Last Name</label>
                               <div class="controls">
-                                 <input required name="lname" value="<?php echo $_lname; ?>" 
+                                 <input name="lname" value="<?php echo $_lname; ?>" 
                                  placeholder="Enter Last Name" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Email</label>
                               <div class="controls">
-                                 <input required name="email" value="<?php echo $_email; ?>" 
+                                 <input name="email" value="<?php echo $_email; ?>" 
                                  placeholder="Enter Email " type="email" class="span6 " />
                               </div>
                            </div>
@@ -377,50 +377,50 @@ include 'headers/menu-top-navigation.php';
                              <div class="control-group">
                               <label class="control-label">Facebook</label>
                               <div class="controls">
-                                 <input required name="facebook" value="<?php echo $_facebook?>" 
+                                 <input name="facebook" value="<?php echo $_facebook?>" 
                                  placeholder="" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Twitter</label>
                               <div class="controls">
-                                 <input required name="twitter" value="<?php echo $_twitter?>" 
+                                 <input name="twitter" value="<?php echo $_twitter?>" 
                                  placeholder="" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Linked</label>
                               <div class="controls">
-                                 <input required name="linked" value="<?php echo $_linkedin?>" 
+                                 <input name="linked" value="<?php echo $_linked?>" 
                                  placeholder="" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Youtube</label>
                               <div class="controls">
-                                 <input required name="youtube" value="<?php echo $_youtube?>" 
+                                 <input name="youtube" value="<?php echo $_youtube?>" 
                                  placeholder="" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Google Plus</label>
                               <div class="controls">
-                                 <input required name="googlePlus" value="<?php echo $_google?>" 
+                                 <input name="googlePlus" value="<?php echo $_google?>" 
                                  placeholder="" type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Youtube Video Link</label>
                               <div class="controls">
-                                 <input required name="video" value="<?php echo $_video;?>" 
+                                 <input name="video" value="<?php echo $_video;?>" 
                                  placeholder="Your Youtbe Video Link " type="text" class="span6 " />
                               </div>
                            </div>
                              <div class="control-group">
                               <label class="control-label">Company Refer Link</label>
                               <div class="controls">
-                                 <input required name="referlink" value="" 
-                                 placeholder="Your Company Refer Link" value="<?php echo $_referlink;?>" type="text" class="span6 " />
+                                 <input required name="referlink" placeholder="Your Company Refer Link" 
+                                 value="<?php echo $_referlink;?>" type="text" class="span6 " />
                               </div>
                            </div>
                      <?php
@@ -433,7 +433,7 @@ include 'headers/menu-top-navigation.php';
                             <div class='controls'>
                                 <div class='fileupload fileupload-new' data-provides='fileupload'>
                                     <div class='fileupload-new thumbnail' style='width: 200px; height: 150px;'>
-                                        <img src='<?php echo $_profilePic; ?>' alt='' />
+                                        <img src='$_profilePic ?>' alt='' />
                                     </div>
                                     <div class='fileupload-preview fileupload-exists thumbnail' style='max-width: 200px; max-height: 150px; line-height: 20px;'></div>
                                     <div>
@@ -448,42 +448,42 @@ include 'headers/menu-top-navigation.php';
                              <div class='control-group'>
                               <label class='control-label'>Facebook</label>
                               <div class='controls'>
-                                 <input required name='facebook' value='<?php echo $_facebook?>' 
+                                 <input required name='facebook' value='$_facebook' 
                                  placeholder='' type='text' class='span6 ' />
                               </div>
                            </div>
                              <div class='control-group'>
                               <label class='control-label'>Twitter</label>
                               <div class='controls'>
-                                 <input required name='twitter' value='<?php echo $_twitter?>' 
+                                 <input required name='twitter' value='$_twitter' 
                                  placeholder='' type='text' class='span6 ' />
                               </div>
                            </div>
                              <div class='control-group'>
                               <label class='control-label'>Linked</label>
                               <div class='controls'>
-                                 <input required name='linked' value='<?php echo $_linkedin?>' 
+                                 <input required name='linked' value='$_linkedin' 
                                  placeholder='' type='text' class='span6 ' />
                               </div>
                            </div>
                              <div class='control-group'>
                               <label class='control-label'>Youtube</label>
                               <div class='controls'>
-                                 <input required name='youtube' value='<?php echo $_youtube?>' 
+                                 <input required name='youtube' value='$_youtube' 
                                  placeholder='' type='text' class='span6 ' />
                               </div>
                            </div>
                              <div class='control-group'>
                               <label class='control-label'>Google Plus</label>
                               <div class='controls'>
-                                 <input required name='googlePlus' value='<?php echo $_google?>' 
+                                 <input required name='googlePlus' value='$_google' 
                                  placeholder='' type='text' class='span6 ' />
                               </div>
                            </div>
                              <div class='control-group'>
                               <label class='control-label'>Youtube Video Link</label>
                               <div class='controls'>
-                                 <input required name='video' value='<?php echo $_video;?>' 
+                                 <input required name='video' value='$_video' 
                                  placeholder='Your Youtbe Video Link ' type='text' class='span6 ' />
                               </div>
                            </div>
@@ -491,7 +491,7 @@ include 'headers/menu-top-navigation.php';
                               <label class='control-label'>Company Refer Link</label>
                               <div class='controls'>
                                  <input required name='referlink' value='' 
-                                 placeholder='Your Company Refer Link' value='<?php echo $_referlink;?>' type='text' class='span6 ' />
+                                 placeholder='Your Company Refer Link' value='$_referlink' type='text' class='span6 ' />
                               </div>
                            </div>
 							";
@@ -571,7 +571,8 @@ include 'headers/menu-top-navigation.php';
          App.init();
       });
    </script>
-      		<script>
+      <!--
+	  <script>
          var specialKeys = new Array();
         specialKeys.push(8); //Backspace
         function IsNumeric(e) 
@@ -593,6 +594,7 @@ include 'headers/menu-top-navigation.php';
             return ret1;
 		}
 		</script>
+        -->
 </body>
 </html>
 
