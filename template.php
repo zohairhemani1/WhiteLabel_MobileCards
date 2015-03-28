@@ -54,7 +54,7 @@ include 'headers/client-details.php';
 
 <body>
 
- <iframe class="wrapper" src="../designs/template<?php echo $_template; ?>.php?username=<?php echo $username; ?>"></iframe>
+ <iframe class="wrapper" src="designs/template<?php echo $_template; ?>.php?username=<?php echo $username; ?>"></iframe>
 
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php 
 echo"
    <div id='footer'>
-       2015 &copy; <a class='footer' href='#'><font color='white'>Whit Labele.</font></a>
+       2015 &copy; <a class='footer' href='#'><font color='white'>lovemyselfiecity</font></a>
       <div class='span pull-right'>
          <span class='go-top'><i class='icon-arrow-up'></i></span>
       </div>

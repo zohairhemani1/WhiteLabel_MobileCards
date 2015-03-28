@@ -1,12 +1,12 @@
 <?php
 
-$db_host = "localhost"; 
+$db_host = "selfiecitywl.db.11683817.hostedresource.com"; 
 
-$db_username = "root";  
+$db_username = "selfiecitywl";  
 
-$db_pass = "";  
+$db_pass = "Hemani786!";  
 
-$db_name = "smartcard"; 
+$db_name = "selfiecitywl"; 
 
 // Run the connection here  
 

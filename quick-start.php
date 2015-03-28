@@ -91,7 +91,8 @@ if(isset($_SESSION['username']))
 			$query_details = "UPDATE registeration SET fname = '$_fname', lname = '$_lname', email = '$_email', logo = '$_logo', job = '$_jobTitle', office = '$_office', mobile = '$_mobile', website = '$_website', profilePicture = '$_profilePic', facebook = '$_facebook', twitter = '$_twitter', linked = '$_linked', youtube = '$_youtube', google = '$_google', description = '$_description', video = '$_video', template = '$template', state = '$_state', city = '$_city', zip = '$_zip', country = '$_country', address = '$_address', gender = '$_gender', referlink = '$_referlink' WHERE username like '$username' ";
 		mysqli_query($con,$query_details)
 		or die ('error');
-			$url = "cards/$username";
+			//$url = "cards/$username";
+			$url = "template.php?username={$username}";
 		$redirect = 1 ;
 
 			}

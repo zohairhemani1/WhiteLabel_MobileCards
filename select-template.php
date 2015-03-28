@@ -134,7 +134,7 @@ include 'headers/menu-top-navigation.php';
                              White Template BIZ</div> </a></p>
                                                     <a class="fancybox-button" data-rel="fancybox-button" title="White Template Bizz" href="img/design1.png">
                                                         <div class="zoom">
-															<img src="img/design1.png" style="width:200px;height:290px" alt="design1" />
+															<img src="img/design1.png" style="width:200px;height:495px;" alt="design1" />
 															<div class="zoom-icon"></div>
 														</div>
 													</a>

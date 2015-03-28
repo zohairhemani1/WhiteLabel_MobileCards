@@ -36,10 +36,10 @@ body {
     </div>
     <div class="contact_info">
       <ul>
-        <li><a href="tel:<?php echo $_office; ?>"><img src="/images/phone_ico_design_two.png" width="85" alt="phone" /></a></li>
-        <li><a href="tel:<?php echo $_mobile; ?>"><img src="/images/mobile_ico_design_two.png" width="85" alt="phone" /></a></li>
-        <li><a href="https://www.google.com/maps/place/<?php echo  "{$_address}+{$_city}+{$_country}+{$_sindh}"; ?>" target="_blank"><img src="/images/map_ico.png" width="85" alt="phone" /></a></li>
-        <li><a href="mailto:<?php echo $_email; ?>"><img src="/images/mail_ico_design_two.png" width="85" alt="phone" /></a></li>
+        <li><a href="tel:<?php echo $_office; ?>"><img src="../images/phone_ico_design_two.png" width="85" alt="phone" /></a></li>
+        <li><a href="tel:<?php echo $_mobile; ?>"><img src="../images/mobile_ico_design_two.png" width="85" alt="phone" /></a></li>
+        <li><a href="https://www.google.com/maps/place/<?php echo  "{$_address}+{$_city}+{$_country}+{$_sindh}"; ?>" target="_blank"><img src="../images/map_ico.png" width="85" alt="phone" /></a></li>
+        <li><a href="mailto:<?php echo $_email; ?>"><img src="../images/mail_ico_design_two.png" width="85" alt="phone" /></a></li>
         <div class="clear"></div>
       </ul>
       <div class="clear"></div>
