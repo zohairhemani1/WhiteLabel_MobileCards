@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $_fname . " " . $_lname . " - Biz Social Etc"; ?></title>
 <link rel="stylesheet" href="/css/style3.css" type="text/css" />
-<link rel="stylesheet" href="/css/media_queries3.css" type="text/css" />
+<link rel="stylesheet" href="/card_css/media_queries3.css" type="text/css" />
 <link href="/assets/css/jquery.bxslider.css" rel="stylesheet" />
 <style type="text/css">
 body {

@@ -3,6 +3,10 @@
 include 'headers/client-details.php';
 include 'headers/connect_to_mysql.php';
 
+if(!$_POST)
+{ 
+$upgrade = "";
+}
 
 // Register page Start here//
 		if(!empty($_POST['register']))
@@ -43,7 +47,7 @@ include 'headers/connect_to_mysql.php';
 			else
 			{
 			
-			
+				$upgrade = "";
 				$query = "INSERT INTO registeration(fname,lname,password,email,username,activationKey) VALUES('$firstName','$lastName','$password','$email','$username','$activationKey')";
 				$result = mysqli_query($con,$query);
 				//$headers = "From: {$email_client}" . "\r\n";
@@ -59,7 +63,9 @@ include 'headers/connect_to_mysql.php';
 	// Register Page End here //
 
 
-	$upgrade = $_GET['upgrade'];
+	
+		$upgrade = $_GET['updagrade'];
+
 	if($_GET['active'])
 	{
 		$error = "Your account has been successfully activated";	
@@ -101,7 +107,8 @@ include 'headers/connect_to_mysql.php';
 		}
 		
 	}
-			//Login Work End Here //
+	
+	//Login Work End Here //
 
 			// Reset Username begin here //
 	
