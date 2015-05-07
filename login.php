@@ -21,7 +21,7 @@ $upgrade = "";
 			//$subject = "Please verify your new account at {$username_client}";
 			//$message = "Thank you for registering for {$username_client} Beta!\nPlease click the link below to activate your account.\nClick here to activate your account.\n{$domain_client}/account-activation.php?activate=$activationKey\nClicking on this link will lead you to a page that verifies your successful registration, and will provide a link for customizing your very first {$username_client}!\n\nYour Username Is: {$username}\nYour Password Is: {$password}\n\nTo view and/or share your card, go to {$domain_client}/cards/{$username}\n\n If you have any questions, please email {$username_client} at {$email_client}";
 			
-			$query_username = "SELECT * FROM registeration WHERE username like '$username'";
+			$query_username = "SELECT * FROM registeration WHERE username like 'zohairhemani'";
 			$result_username = mysqli_query($con,$query_username);
 			$count = mysqli_num_rows($result_username);
 			if($password != $confirmPassword)

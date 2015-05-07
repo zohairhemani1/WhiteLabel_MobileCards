@@ -30,10 +30,10 @@
     </div>
     <div class="contact_info">
       <ul>
-        <li><a href="tel:<?php echo $_office; ?>"><img src="/images/phone_ico_design_two.png" width="85" alt="phone" /></a></li>
-        <li><a href="tel:<?php echo $_mobile; ?>"><img src="/images/mobile_ico_design_two.png" width="85" alt="phone" /></a></li>
-        <li><a href="https://www.google.com/maps/place/<?php echo  "{$_address}+{$_city}+{$_country}+{$_sindh}"; ?>" target="_blank"><img src="/images/map_ico.png" width="85" alt="phone" /></a></li>
-        <li><a href="mailto:<?php echo $_email; ?>"><img src="/images/mail_ico_design_two.png" width="85" alt="phone" /></a></li>
+        <li><a href="tel:<?php echo $_office; ?>"><img src="/img/phone_ico_design_two.png" width="85" alt="phone" /></a></li>
+        <li><a href="tel:<?php echo $_mobile; ?>"><img src="/img/mobile_ico_design_two.png" width="85" alt="phone" /></a></li>
+        <li><a href="https://www.google.com/maps/place/<?php echo  "{$_address}+{$_city}+{$_country}+{$_sindh}"; ?>" target="_blank"><img src="/img/map_ico.png" width="85" alt="phone" /></a></li>
+        <li><a href="mailto:<?php echo $_email; ?>"><img src="/img/mail_ico_design_two.png" width="85" alt="phone" /></a></li>
         <div class="clear"></div>
       </ul>
       <div class="clear"></div>
@@ -179,7 +179,7 @@ body {
       <ul class="bxslider" style="position: absolute; left:0;">
         <li>
           <center>
-            <a href="http://thesmartercard.com" target="_blank"><img src="/images/sliderimage1.jpg" /></a>
+            <a href="http://thesmartercard.com" target="_blank"><img src="../img/sliderimage1.jpg" /></a>
           </center>
         </li>
         
@@ -191,7 +191,7 @@ body {
 
 
 
-                        <img src="/images/sliderimagethree.jpg" />
+                        <img src="/img/sliderimagethree.jpg" />
 
 
 
@@ -211,7 +211,7 @@ body {
 
 
 
-                        <img src="/images/sliderimagethree.jpg" />
+                        <img src="/img/sliderimagethree.jpg" />
 
 
 
@@ -231,7 +231,7 @@ body {
 
 
 
-                        <img src="/images/sliderimagefour.jpg" />
+                        <img src="/img/sliderimagefour.jpg" />
 
 
 
@@ -251,7 +251,7 @@ body {
 
 
 
-                        <img src="/images/sliderimagefive.png" />
+                        <img src="/img/sliderimagefive.png" />
 
 
 

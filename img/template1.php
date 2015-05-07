@@ -1,3 +1,78 @@
+<script>
+if (!document.layers)
+document.write('<div id="divStayTopLeft" style="position:absolute">')
+</script>
+
+<layer id="divStayTopLeft">
+
+<!--EDIT BELOW CODE TO YOUR OWN MENU-->
+<table border="1" width="50" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="100%" bgcolor="#FFFFCC">
+      <p align="center"><b><font size="4">Scroll Down</font></b></td>
+  </tr>
+  <tr>
+    <td width="100%" bgcolor="#FFFFFF">
+      <p align="center"><img src="http://thesmartercard.com/survey/wp-content/uploads/2015/01/opT5popiB.fwa_.fw_.png" width="20" height="33" alt=""/></td>
+  </tr>
+</table>
+<!--END OF EDIT-->
+
+</layer>
+
+
+<script type="text/javascript">
+
+/*
+Floating Menu script-  Roy Whittle (http://www.javascript-fx.com/)
+Script featured on/available at http://www.dynamicdrive.com/
+This notice must stay intact for use
+*/
+
+//Enter "frombottom" or "fromtop"
+var verticalpos="frombottom"
+
+if (!document.layers)
+document.write('</div>')
+
+function JSFX_FloatTopDiv()
+{
+    var startX = 3,
+    startY = 150;
+	var ns = (navigator.appName.indexOf("Netscape") != -1);
+	var d = document;
+	function ml(id)
+	{
+		var el=d.getElementById?d.getElementById(id):d.all?d.all[id]:d.layers[id];
+		if(d.layers)el.style=el;
+		el.sP=function(x,y){this.style.left=x;this.style.top=y;};
+		el.x = startX;
+		if (verticalpos=="fromtop")
+		el.y = startY;
+		else{
+		el.y = ns ? pageYOffset + innerHeight : document.body.scrollTop + document.body.clientHeight;
+		el.y -= startY;
+		}
+		return el;
+	}
+	window.stayTopLeft=function()
+	{
+		if (verticalpos=="fromtop"){
+		var pY = ns ? pageYOffset : document.body.scrollTop;
+		ftlObj.y += (pY + startY - ftlObj.y)/8;
+		}
+		else{
+		var pY = ns ? pageYOffset + innerHeight : document.body.scrollTop + document.body.clientHeight;
+		ftlObj.y += (pY - startY - ftlObj.y)/8;
+		}
+		ftlObj.sP(ftlObj.x, ftlObj.y);
+		setTimeout("stayTopLeft()", 10);
+	}
+	ftlObj = ml("divStayTopLeft");
+	stayTopLeft();
+}
+JSFX_FloatTopDiv();
+</script>
 <?php
     include '../headers/connect_to_mysql.php';    
     include '../headers/_user-details.php';
@@ -10,36 +85,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $_fname . " " . $_lname . " - Biz Social Etc"; ?></title>
-<link rel="stylesheet" href="../card_css/style3.css" type="text/css" />
-<link rel="stylesheet" href="../card_css/media_queries3.css" type="text/css" />
-<link href="../card_assets/css/jquery.bxslider.css" rel="stylesheet" />
+<link rel="stylesheet" href="/css/style3.css" type="text/css" />
+<link rel="stylesheet" href="/css/media_queries3.css" type="text/css" />
+<link href="/assets/css/jquery.bxslider.css" rel="stylesheet" />
 <style type="text/css">
 body {
     background-image: url(/2.jpg);
     background-color: #C6C6C6;
 }
+body,td,th {
+	color: #DDDDDD;
+}
 </style>
-<script src="../headers/jquery-1.10.2.js"></script>
-<script src="../headers/jquery-1.10.2.min.js"></script>
-<script src="../headers/email-validation.js"></script>
+<script src="/headers/jquery-1.10.2.js"></script>
+<script src="/headers/jquery-1.10.2.min.js"></script>
+<script src="/headers/email-validation.js"></script>
 </head>
 
 <body link="#FFFFFF" vlink="#FFFFFF" alink="#FFFFFF">
 <div class="container">
   <div class="header">
-    <div class="logo"> <a class="referlink" href="<?php echo $_referlink; ?>" target="_blank"> <img src="../assets/upload/<?php echo $_logo;?>" width="391" alt="logo" /> </a> </div>
+    <div class="logo"> <a class="referlink" href="<?php echo $_referlink; ?>" target="_blank"> <img src="/assets/upload/<?php echo $_logo;?>" width="391" alt="logo" /> </a> <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61462173-1', 'auto');
+  ga('send', 'pageview');
+
+</script></div>
   </div>
   <div class="content_inner">
     <div class="video_sec">
-      <div class="video" id="youtube"> <?php echo $_youtube; ?> </div>
+      <div class="video" id="youtube"> <?php echo $_video; ?></div>
       <div class="clear"></div>
     </div>
     <div class="contact_info">
       <ul>
-        <li><a href="tel:<?php echo $_office; ?>"><img src="../img/phone_ico_design_two.png" width="85" alt="phone" /></a></li>
-        <li><a href="tel:<?php echo $_mobile; ?>"><img src="../img/mobile_ico_design_two.png" width="85" alt="phone" /></a></li>
-        <li><a href="https://www.google.com/maps/place/<?php echo  "{$_address}+{$_city}+{$_country}+{$_sindh}"; ?>" target="_blank"><img src="../img/map_ico.png" width="85" alt="phone" /></a></li>
-        <li><a href="mailto:<?php echo $_email; ?>"><img src="../img/mail_ico_design_two.png" width="85" alt="phone" /></a></li>
+        <li><a href="tel://<?php echo $_office; ?>"><img src="/images/phone_ico_design_two.png" width="85" alt="phone" />*Icons </a></li>
+        <li><a href="tel:<?php echo $_mobile; ?>"><img src="/images/mobile_ico_design_two.png" width="85" alt="phone" />Work With</a></li>
+        <li><a href="https://www.google.com/maps/place/<?php echo  "{$_address}+{$_city}+{$_country}+{$_sindh}"; ?>" target="_blank"><img src="/images/map_ico.png" width="85" alt="phone" />APP &amp;</a></li>
+        <li><a href="mailto://<?php echo $_email; ?>"><img src="/images/mail_ico_design_two.png" width="85" alt="phone" />Apple</a></li>
         <div class="clear"></div>
       </ul>
       <div class="clear"></div>
@@ -61,7 +148,7 @@ body {
         </p>
         </address>
       </div>
-      <div class="author_img"> <a class="referlink" href="<?php echo $_referlink; ?>" target="_blank"> <img src="../assets/upload/<?php echo $_profilePic;?>" width="135" alt="author image" /></a> </div>
+      <div class="author_img"> <a class="referlink" href="<?php echo $_referlink; ?>" target="_blank"> <img src="/assets/upload/<?php echo $_profilePic;?>" width="135" alt="author image" /></a> </div>
       <div class="clear"></div>
       <p class="disc"><?php echo $_description; ?> </p>
     </div>
@@ -331,16 +418,22 @@ body {
 
 <!-- /AWeber Web Form Generator 3.0 -->
 <div class="disclaimer">
-      <p class="info_p"><br>
-      <p class="info_p">To learn how to bookmark your smart card to your home screen,how to share your smart card and more<a href="http://thesmartercard.com/faq.pdf"> <em><strong>Click Here</strong></em></a><a href="faq.html"><em><strong></strong></em></a></p><br>
+      <p class="info_p">
+      <p class="info_p">   <a href=sms:"<?php echo $_office; ?>"><strong>Click Here To Share Your Card Via Text Message</strong></a><br>
+        *Works With Apps And Apple Devices
+        <br>
+        </br>         
+      <p class="info_p">To learn how to bookmark your smart card to your home screen,how to share your smart card and more<a href="http://thesmartercard.com/faq.pdf"> <em><strong>Click Here</strong></em></a><a href="faq.html"><em><strong></strong></em></a></p>
+      <br>
       *To automatically import my information to your cell
         
         
         
-        phone or address book, enter your email address below and press <span>add to contact</span> button. We respect your privacy please <a href="http://thesmartercard.com/privacy.html"><em>CLICK HERE </em></a>to read our privacy polic</p>
+        phone or address book, enter your email address below and press <span>add to contact</span> button. We respect your privacy please <a href="http://thesmartercard.com/privacy.html"><em>CLICK HERE </em></a>to read our privacy policy.</p>
         <div class="btn_box">
-        <form method="post" action="/vcard_example.php?username=<?php echo $username;?>" name="referralForm" onsubmit="return validateForm()">
+        <form method="post" action="/vcard_example.php?username=<?php echo $username;?>" name="referralForm" onSubmit="return validateForm()">
           <p>
+            Adds to your address book on your phone/PC - Not App
             <input type="email" id="txt" name="emailReferral" placeholder="Enter Your Email Address" />
             <input type="submit" value="ADD TO CONTACTS" id="sbmt" />
           </p>
@@ -354,7 +447,7 @@ body {
 
                     <center>
 
-                         <a href="http://thesmartercard.com/app-pay.html" target="new"><img src="../img/sliderimage1.png" /></a>
+                         <a href="http://thesmartercard.com" target="new"><img src="/images/sliderimage1.png" /></a>
 
                     </center>
 
@@ -371,7 +464,7 @@ body {
 
 
 
-                        <img src="/img/sliderimagethree.jpg" />
+                        <img src="/images/sliderimagethree.jpg" />
 
 
 
@@ -391,7 +484,7 @@ body {
 
 
 
-                        <img src="/img/sliderimagefour.jpg" />
+                        <img src="/images/sliderimagefour.jpg" />
 
 
 
@@ -411,7 +504,7 @@ body {
 
 
 
-                        <img src="/img/sliderimagefive.png" />
+                        <img src="/images/sliderimagefive.png" />
 
 
 
@@ -476,7 +569,7 @@ body {
 
 
   </script> 
-  <script src="../assets/js/jquery.bxslider.min.js"></script> 
+  <script src="/assets/js/jquery.bxslider.min.js"></script> 
   <script type="text/javascript">
 
 
